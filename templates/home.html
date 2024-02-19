@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}home{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/homeStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    <div class="post">
+        <div class="imageArea">
+            <img src="" alt="">
+        </div>
+        <div class="detail">
+            <div class="detailRight">
+                <p class="detailText">説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。</p>
+                <div class="detailRight-under">
+                    <div class="d1"></div>
+                    <div class="d2"></div>
+                    <div class="d3"></div>
+                </div>
+            </div>
+            <div class="detailLeft">
+                <p class="titleComment">コメント</p>
+                <p class="comment">コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。</p>
+            </div>
+        </div>
+    </div>
+    <div class="post">
+        <div class="imageArea">
+            <img src="" alt="">
+        </div>
+        <div class="detail">
+            <div class="detailRight">
+                <p class="detailText">説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。</p>
+                <div class="detailRight-under">
+                    <div class="d1"></div>
+                    <div class="d2"></div>
+                    <div class="d3"></div>
+                </div>
+            </div>
+            <div class="detailLeft">
+                <p class="titleComment">コメント</p>
+                <p class="comment">コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+{% endblock %}

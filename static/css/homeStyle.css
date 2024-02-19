@@ -1,0 +1,465 @@
+@charset "UTF-8";
+/*! destyle.css v4.0.0 | MIT License | https://github.com/nicolas-cusan/destyle.min.css */
+*, ::before, ::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: block;
+}
+
+p, table, blockquote, address, pre, iframe, form, figure, dl {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin-left: 0;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: inherit;
+}
+
+address {
+  font-style: inherit;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+abbr[title] {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+code, kbd, samp {
+  font-family: monospace, monospace;
+  font-size: inherit;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+svg, img, embed, object, iframe {
+  vertical-align: bottom;
+}
+
+button, input, optgroup, select, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit;
+}
+
+button, [type=button], [type=reset], [type=submit] {
+  cursor: pointer;
+}
+
+button:disabled, [type=button]:disabled, [type=reset]:disabled, [type=submit]:disabled {
+  cursor: default;
+}
+
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+option {
+  padding: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type=search] {
+  outline-offset: -2px;
+}
+
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+[type=number] {
+  -moz-appearance: textfield;
+}
+
+label[for] {
+  cursor: pointer;
+}
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+[contenteditable]:focus {
+  outline: auto;
+}
+
+table {
+  border-color: inherit;
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td, th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: 700;
+}
+
+header {
+  width: 100vw;
+  height: 10vh;
+  background-color: #ff7c17;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1vh;
+  position: fixed;
+  top: 0;
+  position: relative;
+}
+header #logoArea {
+  display: flex;
+  justify-content: space-between;
+}
+header #logoArea p {
+  background-color: white;
+  height: 6vh;
+  width: 6vh;
+  margin-right: 1em;
+}
+header #logoArea h1 {
+  background-color: white;
+  padding: 0 1.5em;
+  line-height: 6vh;
+}
+header #navArea {
+  display: flex;
+  /*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
+  /*アクティブクラスがついたら位置を0に*/
+  /*ナビゲーションの縦スクロール*/
+  /*ナビゲーション*/
+}
+header #navArea #point {
+  display: flex;
+}
+header #navArea #point h2 {
+  background-color: white;
+  height: 3vh;
+  width: 3vh;
+  border-radius: 50%;
+  margin-top: 1.5vh;
+}
+header #navArea #point p {
+  line-height: 6vh;
+  font-size: 1.5vh;
+  margin-right: 1vh;
+}
+header #navArea .openbtn {
+  /*ボタン内側の基点となるためrelativeを指定。
+  追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+  position: relative;
+  background: #57a2c7;
+  cursor: pointer;
+  width: 6vh;
+  height: 6vh;
+  border-radius: 5px;
+  z-index: 9999;
+}
+header #navArea .openbtn span {
+  display: inline-block;
+  transition: all 0.4s;
+  /*アニメーションの設定*/
+  position: absolute;
+  left: 1.6vh;
+  height: 3px;
+  border-radius: 2px;
+  background: #fff;
+  width: 45%;
+}
+header #navArea .openbtn span:nth-of-type(1) {
+  top: 1.6vh;
+}
+header #navArea .openbtn span:nth-of-type(2) {
+  top: 2.6vh;
+}
+header #navArea .openbtn span:nth-of-type(3) {
+  top: 3.7vh;
+}
+header #navArea .openbtn.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+}
+header #navArea .openbtn.active span:nth-of-type(2) {
+  opacity: 0;
+  /*真ん中の線は透過*/
+}
+header #navArea .openbtn.active span:nth-of-type(3) {
+  top: 30px;
+  left: 18px;
+  transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+}
+header #navArea #g-nav {
+  /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+  position: fixed;
+  z-index: 999;
+  /*ナビのスタート位置と形状*/
+  top: 0;
+  right: -120%;
+  width: 100%;
+  height: 100vh;
+  /*ナビの高さ*/
+  background: #999;
+  /*動き*/
+  transition: all 0.6s;
+}
+header #navArea #g-nav ul {
+  /*ナビゲーション天地中央揃え*/
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+header #navArea #g-nav.panelactive {
+  right: -50%;
+}
+header #navArea #g-nav.panelactive #g-nav-list {
+  /*ナビの数が増えた場合縦スクロール*/
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  /*表示する高さ*/
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+header #navArea #g-nav ul {
+  /*ナビゲーション天地中央揃え*/
+  position: absolute;
+  z-index: 999;
+  top: 25%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+header #navArea #g-nav ul li {
+  list-style: none;
+  text-align: center;
+}
+header #navArea #g-nav ul li a {
+  color: #333;
+  background-color: white;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  margin-bottom: 2vh;
+  width: 15vh;
+}
+
+footer {
+  width: 100vw;
+  height: 10vh;
+  background-color: #ff7c17;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  position: fixed;
+  position: absolute;
+  bottom: 0;
+}
+footer ul {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+footer ul li {
+  height: 15vw;
+  width: 15vw;
+  background-color: white;
+  border-radius: 50%;
+}
+footer ul li a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+main {
+  height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+main .post {
+  height: 80vh;
+  width: 100vw;
+  margin-bottom: 1vh;
+}
+main .post .imageArea {
+  height: 133.3vw;
+  width: 100vw;
+  overflow: hidden;
+  background-color: aquamarine;
+}
+main .post .detail {
+  height: calc(80vh - 133.3vw);
+  display: flex;
+  background-color: gray;
+  padding: 1vh;
+}
+main .post .detail .detailRight {
+  width: 60vw;
+  margin-right: 1vh;
+}
+main .post .detail .detailRight .detailText {
+  height: 59%;
+  background-color: white;
+  padding: 1vh;
+  font-size: 0.7em;
+  margin-bottom: 1%;
+}
+main .post .detail .detailRight .detailRight-under {
+  height: 39%;
+  display: flex;
+}
+main .post .detail .detailRight .detailRight-under .d1,
+main .post .detail .detailRight .detailRight-under .d2 {
+  height: 100%;
+  aspect-ratio: 1/1;
+  background-color: white;
+  margin-right: 1%;
+}
+main .post .detail .detailRight .detailRight-under .d3 {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+main .post .detail .detailLeft {
+  width: 40vw;
+  background-color: white;
+  padding: 1vh;
+  overflow: hidden;
+}
+main .post .detail .detailLeft .titleComment {
+  margin-bottom: 1vh;
+}
+main .post .detail .detailLeft .comment {
+  overflow-wrap: normal;
+  font-size: 0.7em;
+}/*# sourceMappingURL=homeStyle.css.map */

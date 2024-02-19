@@ -1,0 +1,73 @@
+main {
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    .post {
+        height: 80vh;
+        width: 100vw;
+        margin-bottom: 1vh;
+
+        .imageArea {
+            height: 133.3vw;
+            width: 100vw;
+            overflow: hidden;
+            background-color: aquamarine;
+        }
+
+        .detail {
+            height: calc(80vh - 133.3vw);
+            display: flex;
+            background-color: gray;
+            padding: 1vh;
+
+            .detailRight {
+                width: 60vw;
+                margin-right: 1vh;
+
+                .detailText {
+                    height: 59%;
+                    background-color: white;
+                    padding: 1vh;
+                    font-size: .7em;
+                    margin-bottom: 1%;
+                }
+
+                .detailRight-under {
+                    height: 39%;
+                    display: flex;
+
+                    .d1,
+                    .d2 {
+                        height: 100%;
+                        aspect-ratio: 1 / 1;
+                        background-color: white;
+                        margin-right: 1%;
+                    }
+
+                    .d3 {
+                        height: 100%;
+                        width: 100%;
+                        background-color: white;
+                    }
+                }
+            }
+
+            .detailLeft {
+                width: 40vw;
+                background-color: white;
+                padding: 1vh;
+                overflow: hidden;
+
+                .titleComment {
+                    margin-bottom: 1vh;
+                }
+
+                .comment {
+                    overflow-wrap: normal;
+                    font-size: .7em;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+main {
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    #user {
+        height: 20vh;
+        padding-top: 5vh;
+        width: 100vw;
+        background-color: aqua;
+        display: flex;
+        align-items: center;
+
+        #icon {
+            width: 30%;
+
+            p {
+                height: 10vh;
+                width: 10vh;
+                border-radius: 50%;
+                margin-bottom: 7vh;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: black;
+            }
+        }
+
+        #data {
+            width: 70%;
+
+            h2 {
+                font-size: 1.5rem;
+                line-height: 10vh;
+                margin-top: -10vh;
+            }
+
+            #detail {
+                display: flex;
+                li{
+                    margin: 0 1vh;
+                }
+            }
+        }
+    }
+    #postArea{
+        margin-top: 5vh;
+        padding-top: 5vh;
+        height: auto;
+        width: 100%;
+        background-color:gray;
+        display: flex;
+        flex-wrap: wrap;
+        .post{
+            height: 32vw;
+            width: 32vw;
+            background-color: red;
+            margin: .66vw;
+        }
+    }
+}

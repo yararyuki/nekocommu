@@ -1,0 +1,36 @@
+@use "_variables.scss" as *;
+
+footer {
+    width: 100vw;
+    height: 10vh;
+    background-color: $bgColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    position: fixed;
+    position: absolute;
+    bottom: 0;
+
+    ul {
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            height: 15vw;
+            width: 15vw;
+            background-color: white;
+            border-radius: 50%;
+
+            a {
+                display: block;
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+
+            }
+        }
+    }
+
+}

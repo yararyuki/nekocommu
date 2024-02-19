@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}myprofile{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/myprofileStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    <div id="user">
+        <div id="icon">
+            <p></p>
+        </div>
+
+        <div id="data">
+            <h2>＊＊＊＊＊</h2>
+            <ul id="detail">
+                <li><a href="#">フォロー</a></li>
+                <li><a href="#">フォロワー</a></li>
+                <li><a href="#">ポイント</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="postArea">
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+        <div class="post"></div>
+    </div>
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+{% endblock %}
