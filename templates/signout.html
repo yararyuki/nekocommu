@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}sginout{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/complete.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    <form action="/" class="wrapper" method="get">
+        <h2>ログアウトに成功しました</h2>
+        <input type="submit" value="ホームに戻る" class="button">
+    </form>
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+{% endblock %}

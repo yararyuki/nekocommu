@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}signup{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/loginStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    <form action="/signupMail" class="wrapper" method="post">
+        <h2>新規登録</h2>
+        <div class="Area">
+            <p class="textArea">
+                <label>メールアドレス</label>
+                <input type="email" name="mail" class="textbox" required>
+            </p>
+            <p class="box">
+                <input type="submit" value="新規登録" class="button">
+            </p>
+            <div class="down">
+                <p>&laquo;&nbsp;<a href="http://127.0.0.1:5000/user">アカウントをお持ちの方</a>&nbsp;&raquo;</p>
+            </div>
+        </div>
+    </form>
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+{% endblock %}

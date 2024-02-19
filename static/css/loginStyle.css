@@ -404,4 +404,43 @@ footer ul li a {
 main {
   height: 80vh;
   overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+main .wrapper {
+  position: relative;
+  margin: 0 auto;
+  align-items: center;
+}
+main .wrapper h2 {
+  margin-top: 10vh;
+  font-size: 3em;
+}
+main .wrapper .Area {
+  margin-top: 5vh;
+}
+main .wrapper .Area .textArea {
+  margin-top: 5vh;
+}
+main .wrapper .Area .textArea label {
+  display: block;
+  font-size: 2em;
+  margin-bottom: 2vh;
+}
+main .wrapper .Area .textArea .textbox {
+  border: solid 1px black;
+  width: 80vw;
+  height: 4vh;
+  font-size: 1.5em;
+}
+main .wrapper .Area .box {
+  margin-top: 5vh;
+}
+main .wrapper .Area .box input {
+  font-size: 2em;
+  background-color: grey;
+  padding: 1vh 2vh;
+}
+main .wrapper .Area .down {
+  margin-top: 1vh;
 }/*# sourceMappingURL=loginStyle.css.map */

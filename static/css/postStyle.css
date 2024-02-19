@@ -411,58 +411,19 @@ main .post {
   width: 100vw;
   margin-bottom: 1vh;
 }
-main .post .imageArea {
+main .post .photo_Area {
   height: 133.3vw;
-  width: 100vw;
+  width: 80vw;
+  margin: 0 auto;
   overflow: hidden;
   background-color: aquamarine;
 }
-main .post .imageArea img {
+main .post .photo_Area img {
   width: 100vw;
 }
-main .post .detail {
-  height: calc(80vh - 133.3vw);
-  display: flex;
-  background-color: gray;
-  padding: 1vh;
-}
-main .post .detail .detailRight {
-  width: 60vw;
-  margin-right: 1vh;
-}
-main .post .detail .detailRight .detailText {
-  height: 59%;
-  background-color: white;
-  padding: 1vh;
-  font-size: 0.7em;
-  margin-bottom: 1%;
-}
-main .post .detail .detailRight .detailRight-under {
-  height: 39%;
-  display: flex;
-}
-main .post .detail .detailRight .detailRight-under .d1,
-main .post .detail .detailRight .detailRight-under .d2 {
-  height: 100%;
-  aspect-ratio: 1/1;
-  background-color: white;
-  margin-right: 1%;
-}
-main .post .detail .detailRight .detailRight-under .d3 {
-  height: 100%;
-  width: 100%;
-  background-color: white;
-}
-main .post .detail .detailLeft {
-  width: 40vw;
-  background-color: white;
-  padding: 1vh;
-  overflow: hidden;
-}
-main .post .detail .detailLeft .titleComment {
-  margin-bottom: 1vh;
-}
-main .post .detail .detailLeft .comment {
-  overflow-wrap: normal;
-  font-size: 0.7em;
-}/*# sourceMappingURL=homeStyle.css.map */
+main .post .tag_Area {
+  height: 7vh;
+  width: 80vw;
+  margin: 0 auto;
+  background-color: purple;
+}/*# sourceMappingURL=postStyle.css.map */

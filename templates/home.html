@@ -8,13 +8,14 @@
 {% block main %}
 
 <main>
+    {% for rec in result %}
     <div class="post">
         <div class="imageArea">
-            <img src="" alt="">
+            <img src="/static/images/{{rec['image']}}" alt="">
         </div>
         <div class="detail">
             <div class="detailRight">
-                <p class="detailText">説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。</p>
+                <p class="detailText">{{ rec["detail"] }}</p>
                 <div class="detailRight-under">
                     <div class="d1"></div>
                     <div class="d2"></div>
@@ -23,29 +24,11 @@
             </div>
             <div class="detailLeft">
                 <p class="titleComment">コメント</p>
-                <p class="comment">コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。</p>
+                <p class="comment">{{ rec["comment"] }}</p>
             </div>
         </div>
     </div>
-    <div class="post">
-        <div class="imageArea">
-            <img src="" alt="">
-        </div>
-        <div class="detail">
-            <div class="detailRight">
-                <p class="detailText">説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。説明文です。</p>
-                <div class="detailRight-under">
-                    <div class="d1"></div>
-                    <div class="d2"></div>
-                    <div class="d3"></div>
-                </div>
-            </div>
-            <div class="detailLeft">
-                <p class="titleComment">コメント</p>
-                <p class="comment">コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。</p>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 </main>
 
 {% endblock %}

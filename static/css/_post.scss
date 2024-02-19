@@ -1,0 +1,29 @@
+main {
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    .post {
+        height: 80vh;
+        width: 100vw;
+        margin-bottom: 1vh;
+
+        .photo_Area {
+            height: 133.3vw;
+            width: 80vw;
+            margin: 0 auto;
+            overflow: hidden;
+            background-color: aquamarine;
+
+            img {
+                width: 100vw;
+            }
+        }
+
+        .tag_Area {
+            height: 7vh;
+            width: 80vw;
+            margin: 0 auto;
+            background-color: purple;
+        }
+    }
+}

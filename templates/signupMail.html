@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}signup{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/signupMailStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    <h2>新規登録</h2>
+    <h3>{{to_email}}に確認メールを送りました</h3>
+    <p>登録はまだ完了していません</p>
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+{% endblock %}

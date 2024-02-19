@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}post{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/postStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+<div class="post">
+    <div class="photo_Area">
+        <img src="" alt="">
+    </div>
+    <div class="tag_Area">
+        <div class="tag">
+            <p class="tag"></p>
+        </div>
+    </div>
+    <div class="detail_Area">
+        <p class="detail"></p>
+    </div>
+    <div class="post">
+    
+    </div>
+</div>
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+{% endblock %}

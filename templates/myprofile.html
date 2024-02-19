@@ -8,13 +8,14 @@
 {% block main %}
 
 <main>
+    {% for rec in result %}
     <div id="user">
         <div id="icon">
             <p></p>
         </div>
 
         <div id="data">
-            <h2>＊＊＊＊＊</h2>
+            <h2>{{rec['name']}}</h2>
             <ul id="detail">
                 <li><a href="#">フォロー</a></li>
                 <li><a href="#">フォロワー</a></li>
@@ -39,9 +40,12 @@
         <div class="post"></div>
         <div class="post"></div>
     </div>
+    {% endfor %}
 </main>
 
 {% endblock %}
 {% block js %}
 {{ super() }}
+<script src="/static/js/menu.js"></script>
+
 {% endblock %}

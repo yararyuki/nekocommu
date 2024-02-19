@@ -403,66 +403,35 @@ footer ul li a {
 
 main {
   height: 80vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-main .post {
-  height: 80vh;
-  width: 100vw;
-  margin-bottom: 1vh;
-}
-main .post .imageArea {
-  height: 133.3vw;
-  width: 100vw;
   overflow: hidden;
-  background-color: aquamarine;
+  position: relative;
+  text-align: center;
+  align-items: center;
 }
-main .post .imageArea img {
-  width: 100vw;
+main h2 {
+  margin-top: 10vh;
+  font-size: 3em;
 }
-main .post .detail {
-  height: calc(80vh - 133.3vw);
+main h3 {
+  margin-top: 5vh;
+  font-size: 1.5em;
+}
+main .itemName {
+  margin-top: 2vh;
+  font-size: 1.2em;
+}
+main .item {
+  font-size: 2em;
+}
+main .btnArea {
   display: flex;
+  margin-top: 10vh;
+}
+main .btnArea form {
+  width: 50vw;
+}
+main .btnArea form input {
+  width: 50%;
+  padding: 1vh 2vh;
   background-color: gray;
-  padding: 1vh;
-}
-main .post .detail .detailRight {
-  width: 60vw;
-  margin-right: 1vh;
-}
-main .post .detail .detailRight .detailText {
-  height: 59%;
-  background-color: white;
-  padding: 1vh;
-  font-size: 0.7em;
-  margin-bottom: 1%;
-}
-main .post .detail .detailRight .detailRight-under {
-  height: 39%;
-  display: flex;
-}
-main .post .detail .detailRight .detailRight-under .d1,
-main .post .detail .detailRight .detailRight-under .d2 {
-  height: 100%;
-  aspect-ratio: 1/1;
-  background-color: white;
-  margin-right: 1%;
-}
-main .post .detail .detailRight .detailRight-under .d3 {
-  height: 100%;
-  width: 100%;
-  background-color: white;
-}
-main .post .detail .detailLeft {
-  width: 40vw;
-  background-color: white;
-  padding: 1vh;
-  overflow: hidden;
-}
-main .post .detail .detailLeft .titleComment {
-  margin-bottom: 1vh;
-}
-main .post .detail .detailLeft .comment {
-  overflow-wrap: normal;
-  font-size: 0.7em;
-}/*# sourceMappingURL=homeStyle.css.map */
+}/*# sourceMappingURL=signupCheckStyle.css.map */

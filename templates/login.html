@@ -8,7 +8,26 @@
 {% block main %}
 
 <main>
-    
+    <form action="/loginCheck" class="wrapper" method="post">
+        <h2>ログイン</h2>
+
+        <div class="Area">
+            <p class="textArea">
+                <label>メールアドレス</label>
+                <input type="email" name="mail" class="textbox" value="{{test.mail}}" required>
+            </p>
+            <p class="textArea">
+                <label>パスワード</label>
+                <input type="password" name="pass" class="textbox" required>
+            </p>
+            <p class="box">
+                <input type="submit" value="ログイン" class="button">
+            </p>
+            <div class="down">
+                <p>&laquo;&nbsp;<a href="http://127.0.0.1:5000/signup">新規登録</a>&nbsp;&raquo;</p>
+            </div>
+        </div>
+    </form>
 </main>
 
 {% endblock %}

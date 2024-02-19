@@ -1,0 +1,17 @@
+main {
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    .wrapper{
+        margin-top: 30vh;
+        h2{
+            margin-bottom: 10vh;
+            font-size: 1.6rem;
+        }
+        input{
+            background-color: gray;
+            padding: 1vh 2vh;
+        }
+    }
+}

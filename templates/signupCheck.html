@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}signup{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/signupCheckStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    <h2>新規登録</h2>
+    <h3>以下の内容で登録します</h3>
+
+    <hr>
+    <p class="itemName">メールアドレス</p>
+    <p class="item">{{mail}}</p>
+    <hr>
+    <p class="itemName">ニックネーム</p>
+    <p class="item">{{result["name"]}}</p>
+    <hr>
+    <p class="itemName">ID</p>
+    <p class="item">{{result["id"]}}</p>
+    <hr>
+
+    </table>
+    <div class="btnArea">
+        <form action="/signupSetting/{{mail}}" method="get">
+            <input type="submit" value="修正" class="button2">
+        </form>
+        <form action="/signupComplete" method="post">
+            <input type="submit" value="登録" class="button">
+        </form>
+    </div>
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+{% endblock %}
