@@ -19,7 +19,11 @@
         <div id="navArea">
             <a href="#" id="point">
                 <h2>P</h2>
+                {% if "userId" in session %}
+                <p>{{point}}</p>
+                {% else %}
                 <p>＊＊＊＊＊</p>
+                {% endif %}
             </a>
             <div class="openbtn"><span></span><span></span><span></span></div>
             <nav id="g-nav">

@@ -143,7 +143,9 @@ def home():
 
         if "userId" in session:
             icon = session["userIcon"]
-            return render_template("home.html", result=result, icon=icon)
+            point = session["userPoint"]
+            return render_template("home.html", result=result, icon=icon, point=point)
+
         return render_template("home.html", result=result)
 
     except mysql.connector.errors.ProgrammingError as e:
@@ -162,12 +164,23 @@ def user():
         try:
             id = session["userId"]
             icon = session["userIcon"]
+            point = session["userPoint"]
+
             print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
             dbop = DbOP("user")
             result = dbop.user(id)
             dbop.close()
+            for rec in result:
+                pointAll = rec["pointAll"]
+            pointAll = f"{pointAll:,}"
 
-            return render_template("myprofile.html", result=result, icon=icon)
+            return render_template(
+                "myprofile.html",
+                result=result,
+                icon=icon,
+                point=point,
+                pointAll=pointAll,
+            )
 
         except mysql.connector.errors.ProgrammingError as e:
             print("***** DB接続エラー *****")
@@ -186,7 +199,8 @@ def user():
 def post():
     if "userId" in session:
         icon = session["userIcon"]
-        return render_template("post.html", icon=icon)
+        point = session["userPoint"]
+        return render_template("post.html", icon=icon, point=point)
     else:
         test = {}
         return render_template("login.html", test=test)
@@ -211,16 +225,20 @@ def loginCheck():
             print(rec["pass"])
             id = rec["id"]
             icon = rec["profile_image"]
+            point = rec["point"]
         if not test["pass"] == rec["pass"]:
             err = "メールアドレスまたはパスワードが違います"
             return render_template("login.html", result=result, err=err, test=test)
 
         session["userId"] = id
         session["userIcon"] = icon
+        session["userPoint"] = point
         dbop = DbOP("post")
         result = dbop.selectAll()
         dbop.close()
-        return render_template("home.html", id=id, result=result, icon=icon)
+        return render_template(
+            "home.html", id=id, result=result, icon=icon, point=point
+        )
 
     except mysql.connector.errors.ProgrammingError as e:
         print("***** DB接続エラー *****")

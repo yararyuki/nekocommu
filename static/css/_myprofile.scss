@@ -41,7 +41,10 @@ main {
             #detail {
                 display: flex;
                 li{
-                    margin: 0 1vh;
+                    width: 33%;
+                    margin: 0 .5vh;
+                    font-size: 1em;
+                    text-align: center;
                 }
             }
         }

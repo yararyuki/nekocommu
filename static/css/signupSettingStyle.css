@@ -231,7 +231,6 @@ header {
   height: 10vh;
   background-color: #ffcc77;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 0 1vh;
   position: fixed;
@@ -239,14 +238,14 @@ header {
   position: relative;
 }
 header #logoArea {
+  width: 60vw;
   display: flex;
-  justify-content: space-between;
 }
 header #logoArea p {
   background-color: white;
   height: 6vh;
   width: 6vh;
-  margin-right: 1em;
+  margin-right: 1vh;
   overflow: hidden;
 }
 header #logoArea p img {
@@ -258,7 +257,9 @@ header #logoArea h1 {
   line-height: 6vh;
 }
 header #navArea {
+  width: 40vw;
   display: flex;
+  justify-content: space-between;
   /*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
   /*アクティブクラスがついたら位置を0に*/
   /*ナビゲーションの縦スクロール*/
@@ -266,6 +267,9 @@ header #navArea {
 }
 header #navArea #point {
   display: flex;
+  margin-left: 1vh;
+  justify-content: space-between;
+  width: 50%;
 }
 header #navArea #point h2 {
   background-color: white;
@@ -279,7 +283,7 @@ header #navArea #point h2 {
 header #navArea #point p {
   line-height: 6vh;
   font-size: 1.5vh;
-  margin-right: 1vh;
+  margin-left: 1vh;
 }
 header #navArea .openbtn {
   /*ボタン内側の基点となるためrelativeを指定。
@@ -453,6 +457,7 @@ main .wrapper .Area .textArea .textbox {
   width: 80vw;
   height: 4vh;
   font-size: 1.5em;
+  font-family: none;
 }
 main .wrapper .Area .box {
   margin-top: 5vh;
