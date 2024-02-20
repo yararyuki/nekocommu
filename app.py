@@ -143,7 +143,9 @@ def home():
 
         if "userId" in session:
             icon = session["userIcon"]
-        return render_template("home.html", result=result, icon=icon)
+            return render_template("home.html", result=result, icon=icon)
+        return render_template("home.html", result=result)
+
     except mysql.connector.errors.ProgrammingError as e:
         print("***DB接続エラー***")
         print(type(e))
@@ -182,8 +184,12 @@ def user():
 
 @app.route("/post")
 def post():
-    icon = session["userIcon"]
-    return render_template("post.html", icon=icon)
+    if "userId" in session:
+        icon = session["userIcon"]
+        return render_template("post.html", icon=icon)
+    else:
+        test = {}
+        return render_template("login.html", test=test)
 
 
 @app.route("/loginCheck", methods=["POST"])
