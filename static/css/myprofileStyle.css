@@ -433,18 +433,21 @@ main {
 }
 main #user {
   height: 20vh;
-  padding-top: 5vh;
   width: 100vw;
   background-color: aqua;
-  display: flex;
-  align-items: center;
 }
-main #user #icon {
-  width: 30%;
-}
-main #user #icon p {
+main #user #user-top {
   height: 10vh;
-  width: 10vh;
+  display: flex;
+}
+main #user #user-top #icon {
+  width: 8vh;
+  height: 8vh;
+  margin: 2vh 2vh 0 2vh;
+}
+main #user #user-top #icon p {
+  height: 8vh;
+  width: 8vh;
   border-radius: 50%;
   margin-bottom: 7vh;
   margin-left: auto;
@@ -452,36 +455,71 @@ main #user #icon p {
   background-color: black;
   overflow: hidden;
 }
-main #user #icon p img {
+main #user #user-top #icon p img {
   width: 100%;
 }
-main #user #data {
+main #user #user-top #data {
   width: 70%;
-  margin-bottom: -5vh;
+  height: 100%;
+  display: flex;
+  margin-top: 3vh;
 }
-main #user #data h2 {
+main #user #user-top #data div {
+  width: 60%;
+}
+main #user #user-top #data div h2 {
   font-size: 1.5em;
   line-height: 4vh;
-  margin-top: -10vh;
 }
-main #user #data h3 {
+main #user #user-top #data div h3 {
   font-size: 1.2em;
   line-height: 2vh;
   margin-bottom: 2vh;
 }
-main #user #data #detail {
+main #user #user-top #data p {
+  height: 6vh;
+  margin-top: 0.5vh;
+  text-align: center;
+}
+main #user #user-top #data p span {
+  display: block;
+  font-size: 1.5em;
+}
+main #user #user-bottom {
+  height: 10vh;
+}
+main #user #user-bottom #detail {
+  height: 7vh;
+  background-color: bisque;
+}
+main #user #user-bottom #followArea {
   display: flex;
 }
-main #user #data #detail li {
+main #user #user-bottom #followArea li {
   width: 33%;
   margin: 0 0.5vh;
   font-size: 1em;
   text-align: center;
 }
 main #tag_Area {
-  height: 5vh;
+  height: 7vh;
   width: 100vw;
-  background-color: aquamarine;
+  padding: 1vh;
+  position: relative;
+  background-color: purple;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+}
+main #tag_Area .tag {
+  line-height: 5vh;
+  height: 5vh;
+  width: auto;
+  background-color: aliceblue;
+  margin-left: 5vw;
+  padding: 0 2vh;
+  border-radius: 30px;
+  text-align: center;
 }
 main #postArea {
   padding-top: 5vh;

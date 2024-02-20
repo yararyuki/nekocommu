@@ -23,6 +23,7 @@ main {
                 width: 100vw;
             }
         }
+
         .tag_Area {
             height: 7vh;
             width: 80vw;
@@ -32,8 +33,8 @@ main {
             background-color: purple;
             display: flex;
             flex-wrap: nowrap;
-            overflow-y: scroll;
-            
+            overflow-x: scroll;
+
             .tag {
                 height: 5vh;
                 width: auto;

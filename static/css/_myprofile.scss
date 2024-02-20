@@ -5,48 +5,79 @@ main {
 
     #user {
         height: 20vh;
-        padding-top: 5vh;
         width: 100vw;
         background-color: aqua;
-        display: flex;
-        align-items: center;
 
-        #icon {
-            width: 30%;
+        #user-top {
+            height: 10vh;
+            display: flex;
 
-            p {
-                height: 10vh;
-                width: 10vh;
-                border-radius: 50%;
-                margin-bottom: 7vh;
-                margin-left: auto;
-                margin-right: auto;
-                background-color: black;
-                overflow: hidden;
-                img{
-                    width: 100%;
+            #icon {
+                width: 8vh;
+                height: 8vh;
+                margin: 2vh 2vh 0 2vh;
+
+                p {
+                    height: 8vh;
+                    width: 8vh;
+                    border-radius: 50%;
+                    margin-bottom: 7vh;
+                    margin-left: auto;
+                    margin-right: auto;
+                    background-color: black;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                    }
                 }
             }
+
+            #data {
+                width: 70%;
+                height: 100%;
+                display: flex;
+                margin-top: 3vh;
+
+                div {
+                    width: 60%;
+
+                    h2 {
+                        font-size: 1.5em;
+                        line-height: 4vh;
+                    }
+
+                    h3 {
+                        font-size: 1.2em;
+                        line-height: 2vh;
+                        margin-bottom: 2vh;
+                    }
+                }
+
+                p {
+                    height: 6vh;
+                    margin-top: .5vh;
+                    text-align: center;
+
+                    span {
+                        display: block;
+                        font-size: 1.5em;
+                    }
+                }
+            }
+
         }
 
-        #data {
-            width: 70%;
-            margin-bottom: -5vh;
-
-            h2 {
-                font-size: 1.5em;
-                line-height: 4vh;
-                margin-top: -10vh;
+        #user-bottom {
+            height: 10vh;
+            #detail{
+                height: 7vh;
+                background-color: bisque;
             }
-            h3 {
-                font-size: 1.2em;
-                line-height: 2vh;
-                margin-bottom: 2vh;
-            }
-
-            #detail {
+            #followArea {
                 display: flex;
-                li{
+
+                li {
                     width: 33%;
                     margin: 0 .5vh;
                     font-size: 1em;
@@ -55,20 +86,40 @@ main {
             }
         }
     }
-    #tag_Area{
-        height: 5vh;
+
+    #tag_Area {
+        height: 7vh;
         width: 100vw;
-        background-color: aquamarine;
+        padding: 1vh;
+        position: relative;
+        background-color: purple;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+
+        .tag {
+            line-height: 5vh;
+            height: 5vh;
+            width: auto;
+            background-color: aliceblue;
+            margin-left: 5vw;
+            padding: 0 2vh;
+            border-radius: 30px;
+            text-align: center;
+
+        }
     }
-    #postArea{
+
+    #postArea {
 
         padding-top: 5vh;
         height: auto;
         width: 100%;
-        background-color:gray;
+        background-color: gray;
         display: flex;
         flex-wrap: wrap;
-        .post{
+
+        .post {
             height: 32vw;
             width: 32vw;
             background-color: red;

@@ -10,23 +10,30 @@
 <main>
     {% for rec in result %}
     <div id="user">
-        <div id="icon">
-            <p><img src="/static/images/icon/{{icon}}" alt=""></p>
+        <div id="user-top">
+            <div id="icon">
+                <p><img src="/static/images/icon/{{icon}}" alt=""></p>
+            </div>
+            <div id="data">
+                <div>
+                    <h2>{{rec['name']}}</h2>
+                    <h3>ID:{{rec['id']}}</h3>
+                </div>
+                <p>ポイント<span>{{pointAll}}</span></p>
+            </div>
         </div>
-
-        <div id="data">
-            <h2>{{rec['name']}}</h2>
-            <h3>ID:{{rec['id']}}</h3>
-            <ul id="detail">
+        <div id="user-bottom">
+            <p id="detail">{{rec["profile_detail"]}}</p>
+            <ul id="followArea">
                 <li><a href="#">フォロー</a></li>
                 <li><a href="#">フォロワー</a></li>
-                <li><a href="#">ポイント<span>{{pointAll}}</span></a></li>
             </ul>
         </div>
     </div>
+
     <ul id="tag_Area">
         {% for rec in tag_tbl %}
-        <li>{{ rec }}</li>
+        <li class="tag">{{ rec }}</li>
         {% endfor %}
     </ul>
     <div id="postArea">
