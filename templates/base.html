@@ -25,7 +25,7 @@
             <nav id="g-nav">
                 <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
                     <ul>
-                        {% if "id" in session %}
+                        {% if "userId" in session %}
                         <li><a href="http://127.0.0.1:5000/signout">ログアウト</a></li>
                         {% else %}
                         <li><a href="http://127.0.0.1:5000/user">ログイン</a></li>
@@ -42,11 +42,15 @@
     {% endblock %}
     <footer>
         <ul>
-            <li><a href="http://127.0.0.1:5000/"></a></li>
+            <li><a href="http://127.0.0.1:5000/"><img src="/static/images/material/home.png" alt=""></a></li>
             <li><a href="#"></a></li>
-            <li><a href="http://127.0.0.1:5000/post"></a></li>
+            <li><a href="http://127.0.0.1:5000/post"><img src="/static/images/material/post.png" alt=""></a></li>
             <li><a href="#"></a></li>
+            {% if "userId" in session %}
+            <li><a href="http://127.0.0.1:5000/user"><img src="/static/images/icon/{{icon}}" alt=""></a></li>
+            {% else %}
             <li><a href="http://127.0.0.1:5000/user"></a></li>
+            {% endif %}
         </ul>
     </footer>
     {% block js %}

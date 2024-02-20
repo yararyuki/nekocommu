@@ -58,7 +58,7 @@ class DbOP:
     def Login(self, mail):
         print("************************************************")
 
-        sql = 'SELECT id,pass,mail FROM user WHERE mail ="' + mail + '";'
+        sql = 'SELECT * FROM user WHERE mail ="' + mail + '";'
         print(sql)
 
         cur = self.__con.cursor(dictionary=True)
@@ -141,7 +141,9 @@ def home():
         result = dbop.selectAll()
         dbop.close()
 
-        return render_template("home.html", result=result)
+        if "userId" in session:
+            icon = session["userIcon"]
+        return render_template("home.html", result=result, icon=icon)
     except mysql.connector.errors.ProgrammingError as e:
         print("***DB接続エラー***")
         print(type(e))
@@ -151,20 +153,19 @@ def home():
         print(type(e))
         print(e)
 
-    return render_template("home.html")
-
 
 @app.route("/user")
 def user():
     if "userId" in session:
         try:
             id = session["userId"]
+            icon = session["userIcon"]
             print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
             dbop = DbOP("user")
             result = dbop.user(id)
             dbop.close()
 
-            return render_template("myprofile.html", result=result)
+            return render_template("myprofile.html", result=result, icon=icon)
 
         except mysql.connector.errors.ProgrammingError as e:
             print("***** DB接続エラー *****")
@@ -181,7 +182,8 @@ def user():
 
 @app.route("/post")
 def post():
-    return render_template("post.html")
+    icon = session["userIcon"]
+    return render_template("post.html", icon=icon)
 
 
 @app.route("/loginCheck", methods=["POST"])
@@ -202,12 +204,17 @@ def loginCheck():
         for rec in result:
             print(rec["pass"])
             id = rec["id"]
+            icon = rec["profile_image"]
         if not test["pass"] == rec["pass"]:
             err = "メールアドレスまたはパスワードが違います"
             return render_template("login.html", result=result, err=err, test=test)
 
         session["userId"] = id
-        return render_template("home.html", id=id)
+        session["userIcon"] = icon
+        dbop = DbOP("post")
+        result = dbop.selectAll()
+        dbop.close()
+        return render_template("home.html", id=id, result=result, icon=icon)
 
     except mysql.connector.errors.ProgrammingError as e:
         print("***** DB接続エラー *****")
@@ -245,7 +252,12 @@ def signupMail():
 @app.route("/signupSetting/<mail>")
 def signupSetting(mail):
     session["mail"] = mail
-    return render_template("signupSetting.html")
+    name = ""
+    id = ""
+    if "name" in session:
+        name = session["name"]
+        id = session["id"]
+    return render_template("signupSetting.html", name=name, id=id)
 
 
 @app.route("/signupCheck", methods=["POST"])
@@ -267,7 +279,44 @@ def signupCheck():
             return render_template("signupSetting.html", result=result, err=err)
         session["name"] = result["name"]
         session["id"] = result["id"]
+        session["pass"] = result["pass"]
         return render_template("signupCheck.html", result=result, mail=mail)
+
+    except mysql.connector.errors.ProgrammingError as e:
+        print("***** DB接続エラー *****")
+        print(type(e))
+        print(e)
+    except Exception as e:
+        print("***** システム運行プログラムエラー *****")
+        print(type(e))
+        print(e)
+
+
+@app.route("/signupComplete", methods=["POST"])
+def signupComplete():
+    result = session.copy()
+    sql = (
+        "'"
+        + result["id"]
+        + "','"
+        + result["name"]
+        + "','"
+        + result["mail"]
+        + "','"
+        + result["pass"]
+        + "','"
+        "','"
+        "'"
+    )
+
+    try:
+        dbop = DbOP("user")
+        dbop.insTbl(sql)
+        dbop.close()
+        session.pop("id", None)
+        session.pop("name", None)
+        session.pop("pass", None)
+        return render_template("home.html")
 
     except mysql.connector.errors.ProgrammingError as e:
         print("***** DB接続エラー *****")

@@ -399,6 +399,10 @@ footer ul li a {
   height: 100%;
   width: 100%;
   border-radius: 50%;
+  overflow: hidden;
+}
+footer ul li a img {
+  width: 100%;
 }
 
 main {
@@ -425,6 +429,10 @@ main #user #icon p {
   margin-left: auto;
   margin-right: auto;
   background-color: black;
+  overflow: hidden;
+}
+main #user #icon p img {
+  width: 100%;
 }
 main #user #data {
   width: 70%;
