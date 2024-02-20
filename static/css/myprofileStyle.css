@@ -457,11 +457,17 @@ main #user #icon p img {
 }
 main #user #data {
   width: 70%;
+  margin-bottom: -5vh;
 }
 main #user #data h2 {
-  font-size: 1.5rem;
-  line-height: 10vh;
+  font-size: 1.5em;
+  line-height: 4vh;
   margin-top: -10vh;
+}
+main #user #data h3 {
+  font-size: 1.2em;
+  line-height: 2vh;
+  margin-bottom: 2vh;
 }
 main #user #data #detail {
   display: flex;
@@ -472,8 +478,12 @@ main #user #data #detail li {
   font-size: 1em;
   text-align: center;
 }
+main #tag_Area {
+  height: 5vh;
+  width: 100vw;
+  background-color: aquamarine;
+}
 main #postArea {
-  margin-top: 5vh;
   padding-top: 5vh;
   height: auto;
   width: 100%;

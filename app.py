@@ -172,14 +172,18 @@ def user():
             dbop.close()
             for rec in result:
                 pointAll = rec["pointAll"]
+                tag = rec["tag_name"]
             pointAll = f"{pointAll:,}"
-
+            if "," in tag:
+                tag_tbl = tag.split(",")
+                print(tag_tbl)
             return render_template(
                 "myprofile.html",
                 result=result,
                 icon=icon,
                 point=point,
                 pointAll=pointAll,
+                tag_tbl=tag_tbl,
             )
 
         except mysql.connector.errors.ProgrammingError as e:
@@ -198,9 +202,37 @@ def user():
 @app.route("/post")
 def post():
     if "userId" in session:
-        icon = session["userIcon"]
-        point = session["userPoint"]
-        return render_template("post.html", icon=icon, point=point)
+        try:
+            id = session["userId"]
+            icon = session["userIcon"]
+            point = session["userPoint"]
+            dbop = DbOP("user")
+            result = dbop.user(id)
+            dbop.close()
+
+            for rec in result:
+                tag = rec["tag_name"]
+                print(tag)
+            if "," in tag:
+                tag_tbl = tag.split(",")
+                print(tag_tbl)
+
+            return render_template(
+                "post.html",
+                result=result,
+                icon=icon,
+                id=id,
+                point=point,
+                tag_tbl=tag_tbl,
+            )
+        except mysql.connector.errors.ProgrammingError as e:
+            print("***** DB接続エラー *****")
+            print(type(e))
+            print(e)
+        except Exception as e:
+            print("***** システム運行プログラムエラー *****")
+            print(type(e))
+            print(e)
     else:
         test = {}
         return render_template("login.html", test=test)

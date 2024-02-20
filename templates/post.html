@@ -8,22 +8,24 @@
 {% block main %}
 
 <main>
-<div class="post">
-    <div class="photo_Area">
-        <img src="" alt="">
-    </div>
-    <div class="tag_Area">
-        <div class="tag">
-            <p class="tag"></p>
+    <form action="/">
+        <div class="post">
+            <div class="photo_Area">
+                <img src="" alt="">
+            </div>
+            <div class="tag_Area">
+                {% for rec in tag_tbl %}
+                <input type="submit" value='{{ rec }}' class="button tag">
+                {% endfor %}
+            </div>
+            <div class="detail_Area">
+                <p class="detail"></p>
+            </div>
+            <div class="post">
+
+            </div>
         </div>
-    </div>
-    <div class="detail_Area">
-        <p class="detail"></p>
-    </div>
-    <div class="post">
-    
-    </div>
-</div>
+    </form>
 </main>
 
 {% endblock %}

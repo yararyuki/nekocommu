@@ -31,11 +31,17 @@ main {
 
         #data {
             width: 70%;
+            margin-bottom: -5vh;
 
             h2 {
-                font-size: 1.5rem;
-                line-height: 10vh;
+                font-size: 1.5em;
+                line-height: 4vh;
                 margin-top: -10vh;
+            }
+            h3 {
+                font-size: 1.2em;
+                line-height: 2vh;
+                margin-bottom: 2vh;
             }
 
             #detail {
@@ -49,8 +55,13 @@ main {
             }
         }
     }
+    #tag_Area{
+        height: 5vh;
+        width: 100vw;
+        background-color: aquamarine;
+    }
     #postArea{
-        margin-top: 5vh;
+
         padding-top: 5vh;
         height: auto;
         width: 100%;

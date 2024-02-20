@@ -430,14 +430,18 @@ main {
   height: 80vh;
   overflow-y: scroll;
   overflow-x: hidden;
+  position: relative;
 }
 main .post {
   height: 80vh;
   width: 100vw;
   margin-bottom: 1vh;
+  padding-top: 10vw;
+  background-color: red;
+  position: relative;
 }
 main .post .photo_Area {
-  height: 133.3vw;
+  height: 100vw;
   width: 80vw;
   margin: 0 auto;
   overflow: hidden;
@@ -449,6 +453,20 @@ main .post .photo_Area img {
 main .post .tag_Area {
   height: 7vh;
   width: 80vw;
-  margin: 0 auto;
+  margin: 3vh auto;
+  padding: 1vh;
+  position: relative;
   background-color: purple;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-y: scroll;
+}
+main .post .tag_Area .tag {
+  height: 5vh;
+  width: auto;
+  background-color: aliceblue;
+  margin-left: 5vw;
+  padding: 0 2vh;
+  border-radius: 30px;
+  text-align: center;
 }/*# sourceMappingURL=postStyle.css.map */
