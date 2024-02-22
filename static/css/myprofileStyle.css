@@ -439,6 +439,7 @@ main #user {
 main #user #user-top {
   height: 10vh;
   display: flex;
+  overflow: hidden;
 }
 main #user #user-top #icon {
   width: 8vh;
@@ -474,7 +475,6 @@ main #user #user-top #data div h2 {
 main #user #user-top #data div h3 {
   font-size: 1.2em;
   line-height: 2vh;
-  margin-bottom: 2vh;
 }
 main #user #user-top #data p {
   height: 6vh;
@@ -491,6 +491,7 @@ main #user #user-bottom {
 main #user #user-bottom #detail {
   height: 7vh;
   background-color: bisque;
+  padding: 1vh;
 }
 main #user #user-bottom #followArea {
   display: flex;
@@ -501,18 +502,15 @@ main #user #user-bottom #followArea li {
   font-size: 1em;
   text-align: center;
 }
-main #tag_Area {
+main .tag_Area {
   height: 7vh;
   width: 100vw;
   padding: 1vh;
-  position: relative;
   background-color: purple;
   display: flex;
-  flex-wrap: nowrap;
   overflow-x: scroll;
 }
-main #tag_Area .tag {
-  line-height: 5vh;
+main .tag_Area .tag {
   height: 5vh;
   width: auto;
   background-color: aliceblue;

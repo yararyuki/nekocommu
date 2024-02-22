@@ -31,9 +31,11 @@
         </div>
     </div>
 
-    <ul id="tag_Area">
+    <ul class="tag_Area">
         {% for rec in tag_tbl %}
-        <li class="tag">{{ rec }}</li>
+        <!-- <input type="submit" value='{{ rec }}' class="button tag"> -->
+        <!-- <a href="" class="tag">{{ rec }}</a> -->
+        <li data-filter="all" class="tag"><span>{{ rec }}</span></li>
         {% endfor %}
     </ul>
     <div id="postArea">

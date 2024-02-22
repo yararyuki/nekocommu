@@ -173,9 +173,12 @@ def user():
             for rec in result:
                 pointAll = rec["pointAll"]
                 tag = rec["tag_name"]
+
             pointAll = f"{pointAll:,}"
             if "," in tag:
                 tag_tbl = tag.split(",")
+            else:
+                tag_tbl = {tag}
                 print(tag_tbl)
             return render_template(
                 "myprofile.html",
@@ -209,12 +212,16 @@ def post():
             dbop = DbOP("user")
             result = dbop.user(id)
             dbop.close()
-
+            print("44444444444447878787878")
             for rec in result:
                 tag = rec["tag_name"]
                 print(tag)
             if "," in tag:
                 tag_tbl = tag.split(",")
+                print(tag_tbl)
+
+            else:
+                tag_tbl = {tag}
                 print(tag_tbl)
 
             return render_template(

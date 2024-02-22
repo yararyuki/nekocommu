@@ -11,6 +11,7 @@ main {
         #user-top {
             height: 10vh;
             display: flex;
+            overflow: hidden;
 
             #icon {
                 width: 8vh;
@@ -50,7 +51,6 @@ main {
                     h3 {
                         font-size: 1.2em;
                         line-height: 2vh;
-                        margin-bottom: 2vh;
                     }
                 }
 
@@ -70,10 +70,13 @@ main {
 
         #user-bottom {
             height: 10vh;
-            #detail{
+
+            #detail {
                 height: 7vh;
                 background-color: bisque;
+                padding: 1vh;
             }
+
             #followArea {
                 display: flex;
 
@@ -87,18 +90,16 @@ main {
         }
     }
 
-    #tag_Area {
+
+    .tag_Area {
         height: 7vh;
         width: 100vw;
         padding: 1vh;
-        position: relative;
         background-color: purple;
         display: flex;
-        flex-wrap: nowrap;
         overflow-x: scroll;
 
         .tag {
-            line-height: 5vh;
             height: 5vh;
             width: auto;
             background-color: aliceblue;
@@ -106,7 +107,6 @@ main {
             padding: 0 2vh;
             border-radius: 30px;
             text-align: center;
-
         }
     }
 
