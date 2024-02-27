@@ -383,7 +383,7 @@ header #navArea #g-nav ul li {
   list-style: none;
   text-align: center;
 }
-header #navArea #g-nav ul li a {
+header #navArea #g-nav ul li input {
   color: #333;
   background-color: white;
   text-decoration: none;
@@ -419,14 +419,14 @@ footer ul li {
   background-color: white;
   border-radius: 50%;
 }
-footer ul li a {
+footer ul li input {
   display: block;
   height: 100%;
   width: 100%;
   border-radius: 50%;
   overflow: hidden;
 }
-footer ul li a img {
+footer ul li input img {
   width: 100%;
 }
 

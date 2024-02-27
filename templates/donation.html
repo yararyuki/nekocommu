@@ -18,37 +18,44 @@
             <p class="detail">{{rec["detail"]}}</p>
         </div>
         <div id="selectPoint">
-            <form action="/donation/{{post_id}}/2" method="post" id="selectArea">
-                <div class="addSelect">
-                    <input type="radio" name="addPoint" value="100" id="100" checked>
-                    <label for="100">100</label>
+            <h2>所有ポイント<span><img src="/static/images/material/point.png" alt="">{{point}}</span></h2>
+            <form action="/donation/{{post_id}}/2" method="post" id="selectForm">
+                <div id="selectArea">
+                    <div class="addSelect">
+                        <input type="radio" name="addPoint" value="100" id="100" checked>
+                        <label for="100">100</label>
+                    </div>
+                    <div class="addSelect">
+                        <input type="radio" name="addPoint" value="500" id="500">
+                        <label for="500">500</label>
+                    </div>
+                    <div class="addSelect">
+                        <input type="radio" name="addPoint" value="1000" id="1000">
+                        <label for="1000">1000</label>
+                    </div>
+                    <div class="addSelect">
+                        <input type="radio" name="addPoint" value="3000" id="3000">
+                        <label for="3000">3000</label>
+                    </div>
+                    <div class="addSelect">
+                        <input type="radio" name="addPoint" value="5000" id="5000">
+                        <label for="5000">5000</label>
+                    </div>
+                    <div class="addSelect">
+                        <input type="radio" name="addPoint" value="10000" id="10000">
+                        <label for="10000">10000</label>
+                    </div>
                 </div>
-                <div class="addSelect">
-                    <input type="radio" name="addPoint" value="500" id="500">
-                    <label for="500">500</label>
-                </div>
-                <div class="addSelect">
-                    <input type="radio" name="addPoint" value="1000" id="1000">
-                    <label for="1000">1000</label>
-                </div>
-                <div class="addSelect">
-                    <input type="radio" name="addPoint" value="3000" id="3000">
-                    <label for="3000">3000</label>
-                </div>
-                <div class="addSelect">
-                    <input type="radio" name="addPoint" value="5000" id="5000">
-                    <label for="5000">5000</label>
-                </div>
-                <div class="addSelect">
-                    <input type="radio" name="addPoint" value="10000" id="10000">
-                    <label for="10000">10000</label>
-                </div>
+                <p id="resultPoint">
+
+                </p>
             </form>
         </div>
         {% endfor %}
         {% elif toggle == "2" %}
         {% endif %}
     </main>
+    <script src="/static/js/donation.js"></script>
 </body>
 
 </html>

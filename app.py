@@ -475,6 +475,11 @@ def signout():
 
 @app.route("/searchArea", methods=["GET"])
 def searchArea():
+    if "userId" in session:
+        icon = session["userIcon"]
+        point = session["userPoint"]
+        return render_template("search.html",icon=icon,point=point)
+
     return render_template("search.html")
 
 
@@ -517,34 +522,42 @@ def search():
 
 @app.route("/donation/<post_id>/<number>", methods=["POST"])
 def donation(post_id, number):
+
     print(number)
-    if number == "1":
-        toggle = 1
+    if "userId" in session:
+        point = session["userPoint"]
+        if number == "1":
+            toggle = 1
 
-        try:
-            dbop = DbOP("post")
-            result = dbop.postSolo(post_id)
-            print(result)
+            try:
+                dbop = DbOP("post")
+                result = dbop.postSolo(post_id)
+                print(result)
 
-            return render_template(
-                "donation.html", toggle=toggle, post_id=post_id, result=result
-            )
+                return render_template(
+                    "donation.html",
+                    toggle=toggle,
+                    post_id=post_id,
+                    result=result,
+                    point=point,
+                )
 
-        except mysql.connector.errors.ProgrammingError as e:
-            print("***** DB接続エラー *****")
-            print(type(e))
-            print(e)
-        except Exception as e:
-            print("***** システム運行プログラムエラー *****")
-            print(type(e))
-            print(e)
+            except mysql.connector.errors.ProgrammingError as e:
+                print("***** DB接続エラー *****")
+                print(type(e))
+                print(e)
+            except Exception as e:
+                print("***** システム運行プログラムエラー *****")
+                print(type(e))
+                print(e)
 
     # elif number==2:
 
     # elif number==3:
 
     else:
-        return render_template("donation.html")
+        test = {}
+        return render_template("login.html", test=test)
 
 
 if __name__ == "__main__":

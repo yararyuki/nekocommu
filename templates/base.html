@@ -30,13 +30,33 @@
                 <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
                     <ul>
                         {% if "userId" in session %}
-                        <li><a href="http://127.0.0.1:5000/signout">ログアウト</a></li>
+                        <li>
+                            <form action="/signout">
+                                <input type="submit" value="ログアウト">
+                            </form>
+                        </li>
                         {% else %}
-                        <li><a href="http://127.0.0.1:5000/user">ログイン</a></li>
+                        <li>
+                            <form action="/user">
+                                <input type="submit" value="ログイン">
+                            </form>
+                        </li>
                         {% endif %}
-                        <li><a href="#">項目欄</a></li>
-                        <li><a href="#">項目欄</a></li>
-                        <li><a href="#">項目欄</a></li>
+                        <li>
+                            <form action="/">
+                                <input type="submit" value="項目欄">
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/">
+                                <input type="submit" value="項目欄">
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/">
+                                <input type="submit" value="項目欄">
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -46,14 +66,36 @@
     {% endblock %}
     <footer>
         <ul>
-            <li><a href="http://127.0.0.1:5000/"><img src="/static/images/material/home.png" alt=""></a></li>
-            <li><a href="http://127.0.0.1:5000/searchArea"><img src="/static/images/material/search.png" alt=""></a></li>
-            <li><a href="http://127.0.0.1:5000/post"><img src="/static/images/material/post.png" alt=""></a></li>
+            <li>
+                <form action="/">
+                    <input type="image" src="/static/images/material/home.png">
+                </form>
+            </li>
+            <li>
+                <form action="/searchArea">
+                    <input type="image" src="/static/images/material/search.png">
+                </form>
+            </li>
+            <li>
+                <form action="/post">
+                    <input type="image" src="/static/images/material/post.png">
+                </form>
+            </li>
+
             <li><a href="#"></a></li>
             {% if "userId" in session %}
-            <li><a href="http://127.0.0.1:5000/user"><img src="/static/images/icon/{{icon}}" alt=""></a></li>
+
+            <li>
+                <form action="/user">
+                    <input type="image" src="/static/images/icon/{{icon}}">
+                </form>
+            </li>
             {% else %}
-            <li><a href="http://127.0.0.1:5000/user"></a></li>
+            <li>
+                <form action="/user">
+                    <input type="submit" value="">
+                </form>
+            </li>
             {% endif %}
         </ul>
     </footer>
