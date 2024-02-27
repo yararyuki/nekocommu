@@ -277,8 +277,12 @@ header #navArea #point h2 {
   width: 3vh;
   border-radius: 50%;
   margin-top: 1.5vh;
-  font-size: 1.5em;
   text-align: center;
+  overflow: hidden;
+}
+header #navArea #point h2 img {
+  height: 100%;
+  width: 100%;
 }
 header #navArea #point p {
   line-height: 6vh;

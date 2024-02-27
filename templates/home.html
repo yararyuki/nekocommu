@@ -11,6 +11,10 @@
     {% for rec in result %}
     <div class="post">
         <div class="imageArea">
+            <a href="#" class="user">
+                <p class="user_icon"><img src="/static/images/icon/{{rec['profile_image']}}" alt=""></p>
+                <p class="user_id">{{rec['id']}}</p>
+            </a>
             <img src="/static/images/post/{{rec['image']}}" alt="">
         </div>
         <div class="detail">
@@ -19,7 +23,11 @@
                 <div class="detailRight-under">
                     <div class="d1"><a href="#">いいね</a></div>
                     <div class="d2"><a href="#">共有</a></div>
-                    <div class="d3"><a href="#">寄付</a></div>
+                    <div class="d3">
+                        <form action="/donation/{{rec['post_id']}}/1" method="post">
+                            <input type="submit" value="寄付">
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="detailLeft">

@@ -35,13 +35,13 @@ main {
             }
 
             #data {
-                width: 70%;
+                width: 80%;
                 height: 100%;
                 display: flex;
                 margin-top: 3vh;
 
                 div {
-                    width: 60%;
+                    width: 55%;
 
                     h2 {
                         font-size: 1.5em;
@@ -96,34 +96,50 @@ main {
         width: 100vw;
         padding: 1vh;
         background-color: purple;
-        display: flex;
-        overflow-x: scroll;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
 
         .tag {
+            display: inline-block;
             height: 5vh;
             width: auto;
+            line-height: 5vh;
             background-color: aliceblue;
             margin-left: 5vw;
             padding: 0 2vh;
             border-radius: 30px;
             text-align: center;
         }
+        .tag.is-active{
+            background-color: gold;
+        }
     }
-
     #postArea {
 
-        padding-top: 5vh;
         height: auto;
         width: 100%;
         background-color: gray;
         display: flex;
         flex-wrap: wrap;
 
+
         .post {
             height: 32vw;
             width: 32vw;
             background-color: red;
             margin: .66vw;
+            overflow: hidden;
+
+            position: relative;
+
+            img {
+                width: 100%;
+                margin: auto 0;
+                position: absolute;
+                top: 50%;
+                transform: translate(0, -50%);
+            }
         }
     }
 }

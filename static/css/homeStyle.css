@@ -277,8 +277,12 @@ header #navArea #point h2 {
   width: 3vh;
   border-radius: 50%;
   margin-top: 1.5vh;
-  font-size: 1.5em;
   text-align: center;
+  overflow: hidden;
+}
+header #navArea #point h2 img {
+  height: 100%;
+  width: 100%;
 }
 header #navArea #point p {
   line-height: 6vh;
@@ -432,12 +436,33 @@ main {
   overflow-x: hidden;
 }
 main .post {
-  height: 80vh;
   width: 100vw;
-  margin-bottom: 1vh;
+  position: relative;
+}
+main .post .user {
+  position: absolute;
+  display: flex;
+  z-index: 10;
+  padding: 0.5vh;
+}
+main .post .user .user_icon {
+  height: 4vh;
+  width: 4vh;
+  border-radius: 50%;
+  overflow: hidden;
+}
+main .post .user .user_icon img {
+  height: 100%;
+  width: 100%;
+}
+main .post .user .user_id {
+  margin-left: 0.5vh;
+  line-height: 4vh;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 1px black, -0.5px -0.5px 1px black, 0 0 4px white;
 }
 main .post .imageArea {
-  height: 133.3vw;
   width: 100vw;
   overflow: hidden;
   background-color: aquamarine;

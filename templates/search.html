@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}home{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/searchStyle.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    <form action="/search" class="searchArea" method="get">
+        <input type="text" name="search" class="searchText">
+        <div class="searchButton">
+            <input type="image" src="/static/images/material/search.png" class="searchImg">
+        </div>
+    </form>
+    <div id="userArea">
+
+        {% if resultUser == [] %}
+        <p class="err">アカウント検索結果0件</p>
+        {% else %}
+        {% for rec in resultUser %}
+        <div class="user">
+            <p class="icon"><img src="/static/images/icon/{{rec['profile_image']}}" alt=""></p>
+            <p class="id">{{rec['id']}}</p>
+        </div>
+        {% endfor %}
+
+        {% endif %}
+
+    </div>
+    <div id="postArea">
+        {% if resultPost == [] %}
+        <p class="err">投稿検索結果0件</p>
+        {% else %}
+        {% for rec in resultPost %}
+        <div class="post">
+            <div class="imageArea">
+                <a href="#" class="user">
+                    <p class="user_icon"><img src="/static/images/icon/{{rec['profile_image']}}" alt=""></p>
+                    <p class="user_id">{{rec['id']}}</p>
+                </a>
+                <img src="/static/images/post/{{rec['image']}}" alt="">
+            </div>
+            <div class="detail">
+                <div class="detailRight">
+                    <p class="detailText">{{ rec["detail"] }}</p>
+                    <div class="detailRight-under">
+                        <div class="d1"><a href="#">いいね</a></div>
+                        <div class="d2"><a href="#">共有</a></div>
+                        <div class="d3"><a href="#">寄付</a></div>
+                    </div>
+                </div>
+                <div class="detailLeft">
+                    <p class="titleComment">コメント</p>
+                    <p class="comment">{{ rec["comment"] }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+{% endblock %}

@@ -1,33 +1,42 @@
 main {
     height: 80vh;
     overflow-y: scroll;
-    overflow-x: hidden;
     position: relative;
+    background-color: red;
 
     .post {
-        height: 80vh;
         width: 100vw;
-        margin-bottom: 1vh;
-        padding-top: 10vw;
-        background-color: red;
+        // margin-bottom: 1vh;
+        padding-top: 2vh;
         position: relative;
 
-        .photo_Area {
-            height: 100vw;
-            width: 80vw;
+        label{
+            display: flex;
+            width: 90vw;
+            color: #ffffff;
+            background-color: #384878;
+            cursor: pointer;
+            margin: 0 auto;
+            font-size: 2rem;
+            .file{
+                display: none;
+            }
+        }
+        .photo_Area{
+            height: auto;
+            width: 90vw;
             margin: 0 auto;
             overflow: hidden;
             background-color: aquamarine;
-
             img {
-                width: 100vw;
+                width: 90vw;
             }
         }
 
         .tag_Area {
             height: 7vh;
-            width: 80vw;
-            margin: 3vh auto;
+            width: 90vw;
+            margin: 2vh auto;
             padding: 1vh;
             position: relative;
             background-color: purple;
@@ -43,6 +52,40 @@ main {
                 padding: 0 2vh;
                 border-radius: 30px;
                 text-align: center;
+            }
+        }
+        .detail_Area{
+            height: 10vh;
+            width: 90vw;
+            background-color: blanchedalmond;
+            margin: 0 auto;
+            position: relative;
+            .detail_title{
+                width: 90vw;
+                height: 3vh;
+                font-size: 1.2rem;
+            }
+            .detail{
+                width: 90vw;
+                height: 9vh;
+                background-color: aqua;
+                margin: 0;
+                padding: 0;
+            }
+        }
+        .post_Area{
+            height: 6vh;
+            width: 90vw;
+            background-color: pink;
+            margin: 2.5vh auto;
+            margin-top: 4vh;
+            position: relative;
+            border-radius: 30px;
+            .post_value{
+                height: 6vh;
+                width: 90vw;
+                text-align: center;
+                border-radius: 30px;
             }
         }
     }

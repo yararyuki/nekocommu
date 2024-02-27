@@ -22,7 +22,7 @@ app.config["MAIL_USE_TLS"] = True
 app.config["MAIL_USE_SSL"] = False
 app.config["MAIL_USERNAME"] = "nekocommu@gmail.com"
 app.config["MAIL_PASSWORD"] = "aeqy wxkm rkki cksr"
-app.config["MAIL_DEFAULT_SENDER"] = "nekocommu@gmail.com"
+app.config["MAIL_DEFAULT_SENDER"] = "nekoco.mmu@gmail.com"
 
 mail = Mail(app)
 
@@ -43,7 +43,7 @@ class DbOP:
         )
 
     def selectAll(self):
-        print("************************************************")
+        print("selectAll************************************************")
 
         sql = "SELECT * FROM " + self.__table + ";"
         print(sql)
@@ -54,9 +54,56 @@ class DbOP:
         cur.close()
         return res
 
+    # HOME画面用
+    def homePost(self):
+        print("homePost************************************************")
+
+        sql = "SELECT post.* ,user.profile_image FROM post INNER JOIN user ON post.id = user.id ORDER BY post_id DESC;"
+        print(sql)
+
+        cur = self.__con.cursor(dictionary=True)
+        cur.execute(sql)
+        res = cur.fetchall()
+        cur.close()
+        return res
+
+    # 検索処理POST
+    def searchPost(self, search):
+        print("searchPost************************************************")
+
+        sql = (
+            "SELECT post.* ,user.profile_image FROM post INNER JOIN user ON post.id = user.id WHERE post.detail LIKE '%"
+            + search
+            + "%' ORDER BY RAND();"
+        )
+        print(sql)
+
+        cur = self.__con.cursor(dictionary=True)
+        cur.execute(sql)
+        res = cur.fetchall()
+        cur.close()
+        return res
+
+    # 検索処理USER
+    def searchUser(self, search):
+        print("searchUser************************************************")
+
+        sql = (
+            "SELECT id,profile_image FROM user WHERE id LIKE '%"
+            + search
+            + "%' ORDER BY RAND();"
+        )
+        print(sql)
+
+        cur = self.__con.cursor(dictionary=True)
+        cur.execute(sql)
+        res = cur.fetchall()
+        cur.close()
+        return res
+
     # ログイン
     def Login(self, mail):
-        print("************************************************")
+        print("LOGIN************************************************")
 
         sql = 'SELECT * FROM user WHERE mail ="' + mail + '";'
         print(sql)
@@ -69,7 +116,7 @@ class DbOP:
 
     # ユーザーデータ抽出
     def user(self, id):
-        print("************************************************")
+        print("USER************************************************")
 
         sql = 'SELECT * FROM user WHERE id ="' + id + '";'
         print(sql)
@@ -82,9 +129,35 @@ class DbOP:
 
     # 新規登録ID重複チェック
     def idCheck(self):
-        print("************************************************")
+        print("IDCHECK************************************************")
 
         sql = "SELECT id FROM user ;"
+        print(sql)
+
+        cur = self.__con.cursor(dictionary=True)
+        cur.execute(sql)
+        res = cur.fetchall()
+        cur.close()
+        return res
+
+    # ユーザーごと投稿抽出
+    def postUser(self, id):
+        print("POSTUSER************************************************")
+
+        sql = 'SELECT * FROM post WHERE id ="' + id + '";'
+        print(sql)
+
+        cur = self.__con.cursor(dictionary=True)
+        cur.execute(sql)
+        res = cur.fetchall()
+        cur.close()
+        return res
+
+    # 投稿単体抽出
+    def postSolo(self, id):
+        print("POSTSOLO************************************************")
+
+        sql = 'SELECT * FROM post WHERE post_id ="' + id + '";'
         print(sql)
 
         cur = self.__con.cursor(dictionary=True)
@@ -138,7 +211,7 @@ def home():
     session.pop("mail", None)
     try:
         dbop = DbOP("post")
-        result = dbop.selectAll()
+        result = dbop.homePost()
         dbop.close()
 
         if "userId" in session:
@@ -169,17 +242,19 @@ def user():
             print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
             dbop = DbOP("user")
             result = dbop.user(id)
+            post_date = dbop.postUser(id)
             dbop.close()
             for rec in result:
                 pointAll = rec["pointAll"]
                 tag = rec["tag_name"]
 
             pointAll = f"{pointAll:,}"
-            if "," in tag:
-                tag_tbl = tag.split(",")
+            if " " in tag:
+                tag_tbl = tag.split(" ")
             else:
                 tag_tbl = {tag}
                 print(tag_tbl)
+
             return render_template(
                 "myprofile.html",
                 result=result,
@@ -187,6 +262,7 @@ def user():
                 point=point,
                 pointAll=pointAll,
                 tag_tbl=tag_tbl,
+                post_date=post_date,
             )
 
         except mysql.connector.errors.ProgrammingError as e:
@@ -216,8 +292,8 @@ def post():
             for rec in result:
                 tag = rec["tag_name"]
                 print(tag)
-            if "," in tag:
-                tag_tbl = tag.split(",")
+            if " " in tag:
+                tag_tbl = tag.split(" ")
                 print(tag_tbl)
 
             else:
@@ -273,7 +349,7 @@ def loginCheck():
         session["userIcon"] = icon
         session["userPoint"] = point
         dbop = DbOP("post")
-        result = dbop.selectAll()
+        result = dbop.homePost()
         dbop.close()
         return render_template(
             "home.html", id=id, result=result, icon=icon, point=point
@@ -395,6 +471,80 @@ def signupComplete():
 def signout():
     session.clear()
     return render_template("signout.html")
+
+
+@app.route("/searchArea", methods=["GET"])
+def searchArea():
+    return render_template("search.html")
+
+
+@app.route("/search", methods=["GET"])
+def search():
+    search = request.args.get("search")
+    print(search)
+    try:
+        dbop = DbOP("post")
+        resultPost = dbop.searchPost(search)
+        print(resultPost)
+        dbop = DbOP("user")
+        resultUser = dbop.searchUser(search)
+        print(resultUser)
+        dbop.close()
+
+        if "userId" in session:
+            icon = session["userIcon"]
+            point = session["userPoint"]
+            return render_template(
+                "search.html",
+                resultPost=resultPost,
+                resultUser=resultUser,
+                icon=icon,
+                point=point,
+            )
+        return render_template(
+            "search.html", resultPost=resultPost, resultUser=resultUser
+        )
+
+    except mysql.connector.errors.ProgrammingError as e:
+        print("***** DB接続エラー *****")
+        print(type(e))
+        print(e)
+    except Exception as e:
+        print("***** システム運行プログラムエラー *****")
+        print(type(e))
+        print(e)
+
+
+@app.route("/donation/<post_id>/<number>", methods=["POST"])
+def donation(post_id, number):
+    print(number)
+    if number == "1":
+        toggle = 1
+
+        try:
+            dbop = DbOP("post")
+            result = dbop.postSolo(post_id)
+            print(result)
+
+            return render_template(
+                "donation.html", toggle=toggle, post_id=post_id, result=result
+            )
+
+        except mysql.connector.errors.ProgrammingError as e:
+            print("***** DB接続エラー *****")
+            print(type(e))
+            print(e)
+        except Exception as e:
+            print("***** システム運行プログラムエラー *****")
+            print(type(e))
+            print(e)
+
+    # elif number==2:
+
+    # elif number==3:
+
+    else:
+        return render_template("donation.html")
 
 
 if __name__ == "__main__":

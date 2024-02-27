@@ -10,8 +10,11 @@
 <main>
     <form action="/">
         <div class="post">
+            <label>
+                <input type="file" class="file" onchange="previewImage(this);">写真を選択する
+            </label>
             <div class="photo_Area">
-                <img src="" alt="">
+                <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
             </div>
             <div class="tag_Area">
                 {% for rec in tag_tbl %}
@@ -19,10 +22,11 @@
                 {% endfor %}
             </div>
             <div class="detail_Area">
-                <p class="detail"></p>
+                <p class="detail_title">詳細</p>
+                <textarea class="detail" name="message" cols="10" rows="10" maxlength="200"></textarea>
             </div>
-            <div class="post">
-
+            <div class="post_Area">
+                <input type="submit" value="送信" class="post_value">
             </div>
         </div>
     </form>

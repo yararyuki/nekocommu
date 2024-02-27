@@ -432,42 +432,174 @@ footer ul li a img {
 
 main {
   height: 80vh;
-  overflow: hidden;
-  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+main .searchArea {
+  width: 70vw;
+  height: 4.5vh;
+  margin: 1.5vh auto 0 auto;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  line-height: 0;
+}
+main .searchArea .searchText {
+  display: block;
+  float: left;
+  box-sizing: border-box;
+  height: 3vh;
+  width: 60vw;
+  margin: 0;
+  padding: 0 5px;
+  border: 2px solid #ffcc77;
+  color: #333;
+  outline: 0;
+  font-size: 15px;
+}
+main .searchArea .searchText:focus {
+  background: #cfe7ff;
+}
+main .searchArea .searchText::-ms-clear {
+  display: none;
+}
+main .searchArea .searchButton {
+  float: left;
+  box-sizing: border-box;
+  height: 3vh;
+  margin: 0;
+  padding: 6px 10px;
+  border: none;
+  background: #ffcc77;
+  color: #fff;
+  cursor: pointer;
+}
+main .searchArea .searchImg {
+  display: inline-block;
+  width: auto;
+  height: 120%;
+  margin: 0 3px 0 0;
+  vertical-align: middle;
+}
+main #userArea {
+  width: 100vw;
+  overflow-x: scroll;
+  padding: 2vh;
+  background-color: #ffcc77;
+  display: flex;
+  flex-wrap: nowrap;
+}
+main #userArea .err {
+  margin: 0 auto;
+}
+main #userArea .user {
+  height: 10vh;
+  width: 8vh;
+  margin: 0 1vh;
   text-align: center;
 }
-main .wrapper {
-  position: relative;
+main #userArea .user .icon {
+  height: 8vh;
+  width: 8vh;
+  border-radius: 50%;
+  overflow: hidden;
   margin: 0 auto;
-  align-items: center;
 }
-main .wrapper h2 {
-  margin-top: 5vh;
-  font-size: 3em;
+main #userArea .user .icon img {
+  height: 100%;
+  width: 100%;
 }
-main .wrapper .Area {
-  margin-top: 5vh;
+main #userArea .user .id {
+  height: 2vh;
+  width: 8vh;
+  overflow: hidden;
+  text-align: center;
+  margin: 0 auto;
 }
-main .wrapper .Area .textArea {
-  margin-top: 2vh;
+main #postArea {
+  width: 100vw;
 }
-main .wrapper .Area .textArea label {
-  display: block;
-  font-size: 2em;
-  margin-bottom: 2vh;
+main #postArea .err {
+  text-align: center;
+  padding-top: 50%;
 }
-main .wrapper .Area .textArea .textbox {
-  border: solid 1px black;
-  width: 80vw;
+main #postArea .post {
+  width: 100vw;
+  position: relative;
+}
+main #postArea .post .user {
+  position: absolute;
+  display: flex;
+  z-index: 10;
+  padding: 0.5vh;
+}
+main #postArea .post .user .user_icon {
   height: 4vh;
-  font-size: 1.5em;
-  font-family: none;
+  width: 4vh;
+  border-radius: 50%;
+  overflow: hidden;
 }
-main .wrapper .Area .box {
-  margin-top: 5vh;
+main #postArea .post .user .user_icon img {
+  height: 100%;
+  width: 100%;
 }
-main .wrapper .Area .box input {
-  font-size: 2em;
-  background-color: grey;
-  padding: 1vh 2vh;
-}/*# sourceMappingURL=signupSettingStyle.css.map */
+main #postArea .post .user .user_id {
+  margin-left: 0.5vh;
+  line-height: 4vh;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 1px black, -0.5px -0.5px 1px black, 0 0 4px white;
+}
+main #postArea .post .imageArea {
+  width: 100vw;
+  overflow: hidden;
+  background-color: aquamarine;
+}
+main #postArea .post .imageArea img {
+  width: 100vw;
+}
+main #postArea .post .detail {
+  height: calc(80vh - 133.3vw);
+  display: flex;
+  background-color: gray;
+  padding: 1vh;
+}
+main #postArea .post .detail .detailRight {
+  width: 60vw;
+  margin-right: 1vh;
+}
+main #postArea .post .detail .detailRight .detailText {
+  height: 59%;
+  background-color: white;
+  padding: 1vh;
+  font-size: 0.7em;
+  margin-bottom: 1%;
+}
+main #postArea .post .detail .detailRight .detailRight-under {
+  height: 39%;
+  display: flex;
+}
+main #postArea .post .detail .detailRight .detailRight-under .d1,
+main #postArea .post .detail .detailRight .detailRight-under .d2 {
+  height: 100%;
+  aspect-ratio: 1/1;
+  background-color: white;
+  margin-right: 1%;
+}
+main #postArea .post .detail .detailRight .detailRight-under .d3 {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+main #postArea .post .detail .detailLeft {
+  width: 40vw;
+  background-color: white;
+  padding: 1vh;
+  overflow: hidden;
+}
+main #postArea .post .detail .detailLeft .titleComment {
+  margin-bottom: 1vh;
+}
+main #postArea .post .detail .detailLeft .comment {
+  overflow-wrap: normal;
+  font-size: 0.7em;
+}/*# sourceMappingURL=searchStyle.css.map */

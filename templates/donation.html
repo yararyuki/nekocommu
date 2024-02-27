@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寄付</title>
+    <link rel="stylesheet" href="/static/css/donationStyle.css">
+</head>
+
+<body>
+    <main>
+        {% if toggle == 1 %}
+        <h1>寄付するポイント量を選択してください</h1>
+        {% for rec in result %}
+        <div id="post">
+            <p class="post_img"><img src="/static/images/post/{{rec['image']}}" alt=""></p>
+            <p class="detail">{{rec["detail"]}}</p>
+        </div>
+        <div id="selectPoint">
+            <form action="/donation/{{post_id}}/2" method="post" id="selectArea">
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="100" id="100" checked>
+                    <label for="100">100</label>
+                </div>
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="500" id="500">
+                    <label for="500">500</label>
+                </div>
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="1000" id="1000">
+                    <label for="1000">1000</label>
+                </div>
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="3000" id="3000">
+                    <label for="3000">3000</label>
+                </div>
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="5000" id="5000">
+                    <label for="5000">5000</label>
+                </div>
+                <div class="addSelect">
+                    <input type="radio" name="addPoint" value="10000" id="10000">
+                    <label for="10000">10000</label>
+                </div>
+            </form>
+        </div>
+        {% endfor %}
+        {% elif toggle == "2" %}
+        {% endif %}
+    </main>
+</body>
+
+</html>

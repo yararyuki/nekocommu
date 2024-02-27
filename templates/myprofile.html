@@ -19,7 +19,7 @@
                     <h2>{{rec['name']}}</h2>
                     <h3>ID:{{rec['id']}}</h3>
                 </div>
-                <p>ポイント<span>{{pointAll}}</span></p>
+                <p>総獲得ポイント<span>{{pointAll}}</span></p>
             </div>
         </div>
         <div id="user-bottom">
@@ -30,37 +30,27 @@
             </ul>
         </div>
     </div>
+    {% endfor %}
 
-    <ul class="tag_Area">
-        {% for rec in tag_tbl %}
-        <!-- <input type="submit" value='{{ rec }}' class="button tag"> -->
-        <!-- <a href="" class="tag">{{ rec }}</a> -->
-        <li data-filter="all" class="tag"><span>{{ rec }}</span></li>
+    <ul class="tag_Area filter-list">
+        {% for tag in tag_tbl %}
+        <li data-filter="{{tag}}" class="tag"><span>{{ tag }}</span></li>
         {% endfor %}
     </ul>
-    <div id="postArea">
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
-        <div class="post"></div>
+    <div id="postArea" class="filter-item">
+        {% for pDate in post_date %}
+
+        <div class="post" data-item="{{pDate['tag_name']}}"><img src="/static/images/post/{{pDate['image']}}" alt="">
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+
 </main>
 
 {% endblock %}
 {% block js %}
 {{ super() }}
 <script src="/static/js/menu.js"></script>
+<script src="/static/js/myprofile.js"></script>
 
 {% endblock %}

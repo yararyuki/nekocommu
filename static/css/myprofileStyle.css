@@ -277,8 +277,12 @@ header #navArea #point h2 {
   width: 3vh;
   border-radius: 50%;
   margin-top: 1.5vh;
-  font-size: 1.5em;
   text-align: center;
+  overflow: hidden;
+}
+header #navArea #point h2 img {
+  height: 100%;
+  width: 100%;
 }
 header #navArea #point p {
   line-height: 6vh;
@@ -460,13 +464,13 @@ main #user #user-top #icon p img {
   width: 100%;
 }
 main #user #user-top #data {
-  width: 70%;
+  width: 80%;
   height: 100%;
   display: flex;
   margin-top: 3vh;
 }
 main #user #user-top #data div {
-  width: 60%;
+  width: 55%;
 }
 main #user #user-top #data div h2 {
   font-size: 1.5em;
@@ -507,20 +511,25 @@ main .tag_Area {
   width: 100vw;
   padding: 1vh;
   background-color: purple;
-  display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 main .tag_Area .tag {
+  display: inline-block;
   height: 5vh;
   width: auto;
+  line-height: 5vh;
   background-color: aliceblue;
   margin-left: 5vw;
   padding: 0 2vh;
   border-radius: 30px;
   text-align: center;
 }
+main .tag_Area .tag.is-active {
+  background-color: gold;
+}
 main #postArea {
-  padding-top: 5vh;
   height: auto;
   width: 100%;
   background-color: gray;
@@ -532,4 +541,13 @@ main #postArea .post {
   width: 32vw;
   background-color: red;
   margin: 0.66vw;
+  overflow: hidden;
+  position: relative;
+}
+main #postArea .post img {
+  width: 100%;
+  margin: auto 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }/*# sourceMappingURL=myprofileStyle.css.map */

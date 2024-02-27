@@ -1,0 +1,204 @@
+@use "_variables.scss" as *;
+
+main {
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    .searchArea {
+        width: 70vw;
+        height: 4.5vh;
+        margin: 1.5vh auto 0 auto;
+        letter-spacing: 0.1em;
+        font-weight: bold;
+        line-height: 0;
+
+        .searchText {
+            display: block;
+            float: left;
+            box-sizing: border-box;
+            height: 3vh;
+            width: 60vw;
+            margin: 0;
+            padding: 0 5px;
+            border: 2px solid $bgColor;
+            color: #333;
+            outline: 0;
+            font-size: 15px;
+        }
+
+        .searchText:focus {
+            background: #cfe7ff;
+        }
+
+        .searchText::-ms-clear {
+            display: none;
+        }
+
+        .searchButton {
+            float: left;
+            box-sizing: border-box;
+            height: 3vh;
+            margin: 0;
+            padding: 6px 10px;
+            border: none;
+            background: $bgColor;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .searchImg {
+            display: inline-block;
+            width: auto;
+            height: 120%;
+            margin: 0 3px 0 0;
+            vertical-align: middle;
+        }
+    }
+
+    #userArea {
+        width: 100vw;
+        overflow-x: scroll;
+        padding: 2vh;
+        background-color: $bgColor;
+        display: flex;
+        flex-wrap: nowrap;
+        .err{
+            margin: 0 auto;
+        }
+
+        .user {
+            height: 10vh;
+            width: 8vh;
+            margin: 0 1vh;
+            text-align: center;
+            .icon {
+                height: 8vh;
+                width: 8vh;
+                border-radius: 50%;
+                overflow: hidden;
+                margin: 0 auto;
+                
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    
+                }
+            }
+
+            .id {
+                height: 2vh;
+                width: 8vh;
+                overflow: hidden;
+                text-align: center;
+                margin: 0 auto;
+
+            }
+        }
+    }
+
+    #postArea {
+        width: 100vw;
+        .err{
+            text-align: center;
+            padding-top: 50%;
+        }
+        .post {
+            width: 100vw;
+            position: relative;
+
+            .user {
+                position: absolute;
+                display: flex;
+                z-index: 10;
+                padding: .5vh;
+
+                .user_icon {
+                    height: 4vh;
+                    width: 4vh;
+                    border-radius: 50%;
+                    overflow: hidden;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+
+                .user_id {
+                    margin-left: .5vh;
+                    line-height: 4vh;
+                    font-weight: bold;
+                    color: white;
+                    text-shadow: 1px 1px 1px black, -0.5px -0.5px 1px black, 0 0 4px white;
+                }
+            }
+
+            .imageArea {
+                width: 100vw;
+                overflow: hidden;
+                background-color: aquamarine;
+
+                img {
+                    width: 100vw;
+                }
+            }
+
+            .detail {
+                height: calc(80vh - 133.3vw);
+                display: flex;
+                background-color: gray;
+                padding: 1vh;
+
+                .detailRight {
+                    width: 60vw;
+                    margin-right: 1vh;
+
+                    .detailText {
+                        height: 59%;
+                        background-color: white;
+                        padding: 1vh;
+                        font-size: .7em;
+                        margin-bottom: 1%;
+                    }
+
+                    .detailRight-under {
+                        height: 39%;
+                        display: flex;
+
+                        .d1,
+                        .d2 {
+                            height: 100%;
+                            aspect-ratio: 1 / 1;
+                            background-color: white;
+                            margin-right: 1%;
+                        }
+
+                        .d3 {
+                            height: 100%;
+                            width: 100%;
+                            background-color: white;
+                        }
+                    }
+                }
+
+                .detailLeft {
+                    width: 40vw;
+                    background-color: white;
+                    padding: 1vh;
+                    overflow: hidden;
+
+                    .titleComment {
+                        margin-bottom: 1vh;
+                    }
+
+                    .comment {
+                        overflow-wrap: normal;
+                        font-size: .7em;
+                    }
+                }
+            }
+        }
+    }
+}

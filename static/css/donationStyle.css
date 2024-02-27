@@ -431,43 +431,42 @@ footer ul li a img {
 }
 
 main {
-  height: 80vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+main #post {
+  background-color: gray;
+  padding-bottom: 1vh;
+}
+main #post .post_img {
+  width: 100vw;
+}
+main #post .post_img img {
+  width: 100%;
+}
+main #post .detail {
+  background-color: white;
+  margin-top: 1vh;
+  padding: 0.5vh;
+}
+main #selectPoint #selectArea {
+  display: flex;
+  flex-wrap: wrap;
+}
+main #selectPoint #selectArea .addSelect {
+  width: 50vw;
   overflow: hidden;
-  position: relative;
-  text-align: center;
 }
-main .wrapper {
-  position: relative;
-  margin: 0 auto;
-  align-items: center;
-}
-main .wrapper h2 {
-  margin-top: 5vh;
-  font-size: 3em;
-}
-main .wrapper .Area {
-  margin-top: 5vh;
-}
-main .wrapper .Area .textArea {
-  margin-top: 2vh;
-}
-main .wrapper .Area .textArea label {
+main #selectPoint #selectArea .addSelect label {
   display: block;
-  font-size: 2em;
-  margin-bottom: 2vh;
+  height: 10vh;
+  width: 50vw;
+  text-align: center;
+  line-height: 10vh;
+  background-color: gray;
 }
-main .wrapper .Area .textArea .textbox {
-  border: solid 1px black;
-  width: 80vw;
-  height: 4vh;
-  font-size: 1.5em;
-  font-family: none;
-}
-main .wrapper .Area .box {
-  margin-top: 5vh;
-}
-main .wrapper .Area .box input {
-  font-size: 2em;
-  background-color: grey;
-  padding: 1vh 2vh;
-}/*# sourceMappingURL=signupSettingStyle.css.map */
+main #selectPoint #selectArea .addSelect input:checked + label {
+  background: #d81b60;
+  font-weight: 500;
+  color: #fff;
+}/*# sourceMappingURL=donationStyle.css.map */
