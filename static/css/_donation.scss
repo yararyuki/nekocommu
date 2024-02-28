@@ -10,6 +10,11 @@ main {
         background-color: $bgColor;
         font-size: 5.5vw;
         text-align: center;
+
+        span {
+            font-size: 7vw;
+            text-shadow: 1px 1px 1px black, 0 0 5px white;
+        }
     }
 
     #post {
@@ -52,44 +57,115 @@ main {
             }
         }
 
-        #selectArea {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        #selectForm {
+            #selectArea {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
 
-            .addSelect {
-                width: 50vw;
-                overflow: hidden;
-                margin: 0;
-                position: relative;
-
-                input {
-                    position: absolute;
-                }
-
-                label {
-                    display: block;
-                    height: 10vh;
+                .addSelect {
                     width: 50vw;
-                    text-align: center;
-                    line-height: 10vh;
-                    border: 1px solid black;
-                    display: flex;
-                    justify-content: center;
-                    background-color: rgb(172, 172, 172);
-                    font-size: 3vh;
+                    overflow: hidden;
+                    margin: 0;
+                    position: relative;
+
+                    input {
+                        position: absolute;
+                    }
+
+                    label {
+                        display: block;
+                        height: 10vh;
+                        width: 50vw;
+                        text-align: center;
+                        line-height: 10vh;
+                        border: 1px solid black;
+                        display: flex;
+                        justify-content: center;
+                        background-color: rgb(172, 172, 172);
+                        font-size: 3vh;
+                    }
+
+                    input:checked+label {
+                        background: $bgColor;
+                        font-weight: 500;
+                        color: #fff;
+                        text-shadow: 0 0 2px black;
+                        box-shadow: inset 0 0 2vh white;
+                    }
                 }
+            }
+        }
 
-                input:checked+label {
-                    background: $bgColor;
-                    font-weight: 500;
-                    color: #fff;
-                    text-shadow: 0 0 2px black;
-                    box-shadow: inset 0 0 2vh white;
-                }
+        #checkBtn {
+            text-align: center;
+            margin: 3vh 0;
 
+            a {
+                font-size: 10vw;
+                padding: 1vh 2vh;
+                border: 1px solid black;
+            }
+        }
 
+        #info {
+            display: none;
+        }
+    }
+}
+
+.modaal-container {
+    width: 90vw;
+
+    h2 {
+        text-align: center;
+        margin: .5vh 0;
+
+        span {
+            display: block;
+            font-size: 3vh;
+            line-height: 3vh;
+            margin-left: -1vh;
+
+            img {
+                height: 3vh;
+                border-radius: 50%;
+                border: 1px solid black;
+                margin: auto 0;
             }
 
         }
     }
+
+    #resultArea {
+        display: flex;
+        justify-content: center;
+
+        #resultPoint {
+            font-size: 10vw;
+        }
+
+        #resultText {
+            font-size: 5vw;
+            line-height: 15vw;
+        }
+    }
+
+    #donationBtn {
+        display: block;
+        margin: 0 auto;
+        padding: 1vh;
+        border: 1px solid black;
+    }
+}
+
+.modaal-close:after,
+.modaal-close:before {
+    background: #ccc;
+}
+
+.modaal-close:focus:after,
+.modaal-close:focus:before,
+.modaal-close:hover:after,
+.modaal-close:hover:before {
+    background: #666;
 }

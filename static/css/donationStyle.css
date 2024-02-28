@@ -441,6 +441,10 @@ main h1 {
   font-size: 5.5vw;
   text-align: center;
 }
+main h1 span {
+  font-size: 7vw;
+  text-shadow: 1px 1px 1px black, 0 0 5px white;
+}
 main #post {
   background-color: gray;
   padding-bottom: 1vh;
@@ -472,20 +476,20 @@ main #selectPoint h2 span img {
   border: 1px solid black;
   margin: auto 0;
 }
-main #selectPoint #selectArea {
+main #selectPoint #selectForm #selectArea {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-main #selectPoint #selectArea .addSelect {
+main #selectPoint #selectForm #selectArea .addSelect {
   width: 50vw;
   overflow: hidden;
   margin: 0;
   position: relative;
 }
-main #selectPoint #selectArea .addSelect input {
+main #selectPoint #selectForm #selectArea .addSelect input {
   position: absolute;
 }
-main #selectPoint #selectArea .addSelect label {
+main #selectPoint #selectForm #selectArea .addSelect label {
   display: block;
   height: 10vh;
   width: 50vw;
@@ -497,10 +501,71 @@ main #selectPoint #selectArea .addSelect label {
   background-color: rgb(172, 172, 172);
   font-size: 3vh;
 }
-main #selectPoint #selectArea .addSelect input:checked + label {
+main #selectPoint #selectForm #selectArea .addSelect input:checked + label {
   background: #ffcc77;
   font-weight: 500;
   color: #fff;
   text-shadow: 0 0 2px black;
   box-shadow: inset 0 0 2vh white;
+}
+main #selectPoint #checkBtn {
+  text-align: center;
+  margin: 3vh 0;
+}
+main #selectPoint #checkBtn a {
+  font-size: 10vw;
+  padding: 1vh 2vh;
+  border: 1px solid black;
+}
+main #selectPoint #info {
+  display: none;
+}
+
+.modaal-container {
+  width: 90vw;
+}
+.modaal-container h2 {
+  text-align: center;
+  margin: 0.5vh 0;
+}
+.modaal-container h2 span {
+  display: block;
+  font-size: 3vh;
+  line-height: 3vh;
+  margin-left: -1vh;
+}
+.modaal-container h2 span img {
+  height: 3vh;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: auto 0;
+}
+.modaal-container #resultArea {
+  display: flex;
+  justify-content: center;
+}
+.modaal-container #resultArea #resultPoint {
+  font-size: 10vw;
+}
+.modaal-container #resultArea #resultText {
+  font-size: 5vw;
+  line-height: 15vw;
+}
+.modaal-container #donationBtn {
+  display: block;
+  margin: 0 auto;
+  padding: 1vh;
+  border: 1px solid black;
+}
+
+.modaal-close:after,
+.modaal-close:before {
+  background: #ccc;
+}
+
+.modaal-close:focus:after,
+.modaal-close:focus:before,
+.modaal-close:hover:after,
+.modaal-close:hover:before {
+  background: #666;
 }/*# sourceMappingURL=donationStyle.css.map */
