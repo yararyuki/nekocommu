@@ -4,6 +4,16 @@ main {
     width: 100%;
     overflow-x: hidden;
 
+    #backBtn{
+        background-color: $bgColor;
+        border-bottom: 1px solid black;
+        padding: .5vh;
+        input{
+            color: white;
+            font-size: 7vw;
+        }
+    }
+
     h1 {
         color: #fff;
         text-shadow: 0 0 2px black;
@@ -109,6 +119,26 @@ main {
 
         #info {
             display: none;
+        }
+    }
+    #resultMain{
+        height: 100vh;
+        width: 100vw;
+        h1{
+            background-color: $bgColor;
+            font-size: 10vw;
+            margin-top: 15vh;
+            padding: 10vh 0;
+        }
+        #resultMainBtn{
+            text-align: center;
+            input{
+                background-color: white;
+                border: 1px solid black;
+                padding: 1vh 2vh;
+                font-size: 10vw;
+                margin-top: 40vh;
+            }
         }
     }
 }

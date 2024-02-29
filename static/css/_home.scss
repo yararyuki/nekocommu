@@ -44,6 +44,33 @@ main {
             }
         }
 
+        .detailUp {
+            display: flex;
+            background-color: gray;
+            color: white;
+            padding: .5vh 0;
+            height: 3vh;
+
+            .detailUpLeft {
+                width: 60vw;
+                padding-left: 2vw;
+
+            }
+
+            .detailUpRight {
+                width: 40vw;
+
+                p {
+                    position: relative;
+
+                    span {
+                        position: absolute;
+                        right: 2vw;
+                    }
+                }
+            }
+        }
+
         .detail {
             height: calc(80vh - 133.3vw);
             display: flex;
@@ -58,7 +85,7 @@ main {
                     height: 59%;
                     background-color: white;
                     padding: 1vh;
-                    font-size: .7em;
+                    font-size: 1em;
                     margin-bottom: 1%;
                 }
 

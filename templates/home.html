@@ -17,6 +17,14 @@
             </a>
             <img src="/static/images/post/{{rec['image']}}" alt="">
         </div>
+        <div class="detailUp">
+            <div class="detailUpLeft">
+                <p>{{rec["tag_name"]}}</p>
+            </div>
+            <div class="detailUpRight">
+                <p>獲得ポイント<span>{{rec["post_point"]}}</span></p>
+            </div>
+        </div>
         <div class="detail">
             <div class="detailRight">
                 <p class="detailText">{{ rec["detail"] }}</p>

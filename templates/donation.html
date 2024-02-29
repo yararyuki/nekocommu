@@ -13,6 +13,9 @@
 <body>
     <main>
         {% if toggle == 1 %}
+        <form action="/" id="backBtn">
+            <input type="submit" value="&lt;もどる">
+        </form>
         {% for rec in result %}
         <h1><span>{{rec['id']}}</span>さんに<br>寄付するポイント量を選択してください</h1>
         <div id="post">
@@ -55,7 +58,7 @@
                 <h2>所有ポイント<span><img src="/static/images/material/point.png" alt="">{{point}}</span></h2>
                 <form action="/donation/{{post_id}}/2" method="post">
                     <div id="resultArea">
-                        <input type="hidden" value="500" id="hiddenText">
+                        <input type="hidden" value="500" name="resultPoint" id="hiddenText">
                         <p id="resultPoint">500</p>
                         <p id="resultText">ポイント寄付します</p>
                     </div>
@@ -64,7 +67,13 @@
             </section>
         </div>
         {% endfor %}
-        {% elif toggle == "2" %}
+        {% elif toggle == 2 %}
+        <div id="resultMain">
+            <h1>寄付しました</h1>
+            <form action="/" id="resultMainBtn">
+                <input type="submit" value="もどる">
+            </form>
+        </div>
         {% endif %}
     </main>
     <script src="/static/js/jquery-3.6.0.min.js"></script>

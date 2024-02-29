@@ -434,6 +434,15 @@ main {
   width: 100%;
   overflow-x: hidden;
 }
+main #backBtn {
+  background-color: #ffcc77;
+  border-bottom: 1px solid black;
+  padding: 0.5vh;
+}
+main #backBtn input {
+  color: white;
+  font-size: 7vw;
+}
 main h1 {
   color: #fff;
   text-shadow: 0 0 2px black;
@@ -519,6 +528,26 @@ main #selectPoint #checkBtn a {
 }
 main #selectPoint #info {
   display: none;
+}
+main #resultMain {
+  height: 100vh;
+  width: 100vw;
+}
+main #resultMain h1 {
+  background-color: #ffcc77;
+  font-size: 10vw;
+  margin-top: 15vh;
+  padding: 10vh 0;
+}
+main #resultMain #resultMainBtn {
+  text-align: center;
+}
+main #resultMain #resultMainBtn input {
+  background-color: white;
+  border: 1px solid black;
+  padding: 1vh 2vh;
+  font-size: 10vw;
+  margin-top: 40vh;
 }
 
 .modaal-container {

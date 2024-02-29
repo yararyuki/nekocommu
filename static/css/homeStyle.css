@@ -470,6 +470,27 @@ main .post .imageArea {
 main .post .imageArea img {
   width: 100vw;
 }
+main .post .detailUp {
+  display: flex;
+  background-color: gray;
+  color: white;
+  padding: 0.5vh 0;
+  height: 3vh;
+}
+main .post .detailUp .detailUpLeft {
+  width: 60vw;
+  padding-left: 2vw;
+}
+main .post .detailUp .detailUpRight {
+  width: 40vw;
+}
+main .post .detailUp .detailUpRight p {
+  position: relative;
+}
+main .post .detailUp .detailUpRight p span {
+  position: absolute;
+  right: 2vw;
+}
 main .post .detail {
   height: calc(80vh - 133.3vw);
   display: flex;
@@ -484,7 +505,7 @@ main .post .detail .detailRight .detailText {
   height: 59%;
   background-color: white;
   padding: 1vh;
-  font-size: 0.7em;
+  font-size: 1em;
   margin-bottom: 1%;
 }
 main .post .detail .detailRight .detailRight-under {

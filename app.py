@@ -166,6 +166,44 @@ class DbOP:
         cur.close()
         return res
 
+    # 寄付ポイント処理
+    def point(self, post_id, point, user_id, my_id):
+        sql = (
+            "UPDATE post SET post_point = post_point +"
+            + point
+            + " WHERE POST_ID ="
+            + post_id
+            + ";"
+        )
+        print(sql)
+        cur = self.__con.cursor()
+        cur.execute(sql)
+        self.__con.commit()
+        sql = (
+            "UPDATE user SET point = point +" + point + " WHERE ID ='" + user_id + "';"
+        )
+        print(sql)
+        cur = self.__con.cursor()
+        cur.execute(sql)
+        self.__con.commit()
+        sql = (
+            "UPDATE user SET pointAll = pointAll +"
+            + point
+            + " WHERE ID ='"
+            + user_id
+            + "';"
+        )
+        print(sql)
+        cur = self.__con.cursor()
+        cur.execute(sql)
+        self.__con.commit()
+        sql = "UPDATE user SET point = point -" + point + " WHERE ID ='" + my_id + "';"
+        print(sql)
+        cur = self.__con.cursor()
+        cur.execute(sql)
+        self.__con.commit()
+        cur.close()
+
     # DB接続＆絞込条件抽出
     def selectEx(self, ex):
 
@@ -217,7 +255,10 @@ def home():
         if "userId" in session:
             icon = session["userIcon"]
             point = session["userPoint"]
-            return render_template("home.html", result=result, icon=icon, point=point)
+            id = session["userId"]
+            return render_template(
+                "home.html", result=result, icon=icon, point=point, id=id
+            )
 
         return render_template("home.html", result=result)
 
@@ -478,7 +519,7 @@ def searchArea():
     if "userId" in session:
         icon = session["userIcon"]
         point = session["userPoint"]
-        return render_template("search.html",icon=icon,point=point)
+        return render_template("search.html", icon=icon, point=point)
 
     return render_template("search.html")
 
@@ -551,8 +592,36 @@ def donation(post_id, number):
                 print(type(e))
                 print(e)
 
-    # elif number==2:
+        elif number == "2":
+            toggle = 2
+            resultPoint = request.form["resultPoint"]
+            print(resultPoint)
+            my_id = session["userId"]
+            try:
+                dbop = DbOP("post")
+                result = dbop.postSolo(post_id)
+                for rec in result:
+                    user_id = rec["id"]
 
+                dbop = DbOP("post")
+                dbop.point(post_id, resultPoint, user_id, my_id)
+
+                return render_template(
+                    "donation.html",
+                    toggle=toggle,
+                    post_id=post_id,
+                    result=result,
+                    point=point,
+                )
+
+            except mysql.connector.errors.ProgrammingError as e:
+                print("***** DB接続エラー *****")
+                print(type(e))
+                print(e)
+            except Exception as e:
+                print("***** システム運行プログラムエラー *****")
+                print(type(e))
+                print(e)
     # elif number==3:
 
     else:
