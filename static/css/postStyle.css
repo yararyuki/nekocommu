@@ -443,6 +443,14 @@ main h2 {
   text-align: center;
   padding-top: 1vh;
 }
+main ul {
+  width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+}
+main ul li {
+  font-size: 3vh;
+}
 main .post {
   width: 100vw;
   padding-top: 1vh;

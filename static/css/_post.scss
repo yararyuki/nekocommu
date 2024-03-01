@@ -16,6 +16,14 @@ main {
         text-align: center;
         padding-top: 1vh;
     }
+    ul{
+        width: 80vw;
+        margin: 0 auto;
+        text-align: center;
+        li{
+            font-size: 3vh;
+        }
+    }
     .post {
         width: 100vw;
         // margin-bottom: 1vh;
