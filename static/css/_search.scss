@@ -63,7 +63,8 @@ main {
         background-color: $bgColor;
         display: flex;
         flex-wrap: nowrap;
-        .err{
+
+        .err {
             margin: 0 auto;
         }
 
@@ -72,18 +73,19 @@ main {
             width: 8vh;
             margin: 0 1vh;
             text-align: center;
+
             .icon {
                 height: 8vh;
                 width: 8vh;
                 border-radius: 50%;
                 overflow: hidden;
                 margin: 0 auto;
-                
+
 
                 img {
                     height: 100%;
                     width: 100%;
-                    
+
                 }
             }
 
@@ -100,10 +102,12 @@ main {
 
     #postArea {
         width: 100vw;
-        .err{
+
+        .err {
             text-align: center;
             padding-top: 50%;
         }
+
         .post {
             width: 100vw;
             position: relative;
@@ -142,6 +146,33 @@ main {
 
                 img {
                     width: 100vw;
+                }
+            }
+
+            .detailUp {
+                display: flex;
+                background-color: gray;
+                color: white;
+                padding: .5vh 0;
+                height: 3vh;
+
+                .detailUpLeft {
+                    width: 60vw;
+                    padding-left: 2vw;
+
+                }
+
+                .detailUpRight {
+                    width: 40vw;
+
+                    p {
+                        position: relative;
+
+                        span {
+                            position: absolute;
+                            right: 2vw;
+                        }
+                    }
                 }
             }
 

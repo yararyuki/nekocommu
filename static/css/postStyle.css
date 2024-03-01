@@ -431,11 +431,16 @@ main {
   height: 80vh;
   overflow-y: scroll;
   position: relative;
-  background-color: red;
+  background-color: white;
+}
+main h1 {
+  font-size: 10vw;
+  text-align: center;
+  padding-top: 1vh;
 }
 main .post {
   width: 100vw;
-  padding-top: 2vh;
+  padding-top: 1vh;
   position: relative;
 }
 main .post .img_label {
@@ -455,10 +460,19 @@ main .post .photo_Area {
   width: 90vw;
   margin: 0 auto;
   overflow: hidden;
-  background-color: aquamarine;
+  position: relative;
+  z-index: 1;
 }
-main .post .photo_Area img {
+main .post .photo_Area #iconPreview {
+  width: 80vw;
+  position: absolute;
+  z-index: -1;
+  margin-left: 5vw;
+}
+main .post .photo_Area #preview {
   width: 90vw;
+  height: auto;
+  z-index: 10;
 }
 main .post .tag_Area {
   height: 7vh;
@@ -492,6 +506,26 @@ main .post .tag_Area .tag_name input:checked + label {
   color: #fff;
   text-shadow: 0 0 2px black;
   box-shadow: inset 0 0 2vh white;
+}
+main .post .name_Area {
+  width: 90vw;
+  background-color: blanchedalmond;
+  margin: 0 auto;
+  position: relative;
+}
+main .post .name_Area .name_title {
+  width: 90vw;
+  height: 3vh;
+  font-size: 1.2rem;
+}
+main .post .name_Area .name {
+  width: 90vw;
+  height: 4vh;
+  font-size: 3vh;
+  background-color: aqua;
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
 }
 main .post .detail_Area {
   height: 10vh;

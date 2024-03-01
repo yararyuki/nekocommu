@@ -821,99 +821,123 @@ def comment(post_id):
         return render_template("login.html", test=test)
 
 
-@app.route("/profile/<number>", methods=["POST"])
-def profile(number):
-    print(number)
+@app.route("/profile")
+def profile():
+    icon = session["userIcon"]
+    point = session["userPoint"]
+    my_id = session["userId"]
+    try:
+        dbop = DbOP("user")
+        result = dbop.user(my_id)
+        dbop.close()
+        for rec in result:
+            name = rec["name"]
+            detail = rec["profile_detail"]
+        return render_template(
+            "profileUp.html", icon=icon, point=point, name=name, detail=detail
+        )
+    except mysql.connector.errors.ProgrammingError as e:
+        print("***DB接続エラー***")
+        print(type(e))
+        print(e)
+    except Exception as e:
+        print("***システム運行プログラムエラー***")
+        print(type(e))
+        print(e)
+
+
+@app.route("/profileUp", methods=["POST"])
+def profileUp():
     if "userId" in session:
-        if number == "1":
-            toggle = 1
-            return render_template("profileUp.html", toggle=toggle)
-        elif number == "2":
-            toggle = 2
-            name = request.form["name"]
-            detail = request.form["detail"]
-            my_id = session["userId"]
-            print(name)
+        name = request.form["name"]
+        detail = request.form["detail"]
+        my_id = session["userId"]
+        print(name)
 
-            # ***ファイルオブジェクト取得***
-            file = request.files["file"]
+        # ***ファイルオブジェクト取得***
+        file = request.files["file"]
 
-            filename = file.filename
-            # ***ファイル受信チェック***
-            if not filename:
-                sql = (
-                    'UPDATE user SET name= "'
-                    + name
-                    + '", profile_detail = "'
-                    + detail
-                    + '" WHERE id = "'
-                    + my_id
-                    + '";'
-                )
-                print(sql)
-                try:
-                    dbop = DbOP("user")
-                    dbop.commit(sql)
-                    dbop.close()
-                except mysql.connector.errors.ProgrammingError as e:
-                    print("***DB接続エラー***")
-                    print(type(e))
-                    print(e)
-                except Exception as e:
-                    print("***システム運行プログラムエラー***")
-                    print(type(e))
-                    print(e)
+        filename = file.filename
+        # ***ファイル受信チェック***
+        if not filename:
+            sql = (
+                'UPDATE user SET name= "'
+                + name
+                + '", profile_detail = "'
+                + detail
+                + '" WHERE id = "'
+                + my_id
+                + '";'
+            )
+            print(sql)
+            try:
+                dbop = DbOP("user")
+                dbop.commit(sql)
+                dbop.close()
+                return redirect("/user")
+            except mysql.connector.errors.ProgrammingError as e:
+                print("***DB接続エラー***")
+                print(type(e))
+                print(e)
+            except Exception as e:
+                print("***システム運行プログラムエラー***")
+                print(type(e))
+                print(e)
 
-            else:
-                directory_path = "static/images/icon/"
-                file_name = session["userIcon"]
-                file_path = os.path.join(directory_path, file_name)
-                if not file_name == "unknownUser.jpg":
-                    os.remove(file_path)
+        else:
+            directory_path = "static/images/icon/"
+            file_name = session["userIcon"]
+            print(file_name)
+            file_path = os.path.join(directory_path, file_name)
+            if not file_name == "unknownUser.jpg":
+                os.remove(file_path)
 
-                # ***ファイルオープン***
-                rec = extension_check(filename)
-                if rec == "True":
-                    img = Image.open(file)
-                    img = crop_max_square(img)
-                    # ***日時情報の取得***
-                    savedate = datetime.now().strftime("%Y%m%d_%H%M%S_")
-                    # ***安全なファイル名に変換***
-                    filename = savedate + secure_filename(filename)
-                    # ***保存用フルパス作成***
-                    os.path.join("./static/images/icon", filename)
-                    save_path = os.path.join("./static/images/icon", filename)
-                    # ***ファイル保存***
+            # ***ファイルオープン***
 
-                    img.save(save_path, quality=90)
+            if filename:
+                if not extension_check(filename):
+                    print("ファイルの容量が多い")
+            print(filename)
+            img = Image.open(file)
+            img = crop_max_square(img)
+            # ***日時情報の取得***
+            savedate = datetime.now().strftime("%Y%m%d_%H%M%S_")
+            # ***安全なファイル名に変換***
+            filename = savedate + secure_filename(filename)
+            # ***保存用フルパス作成***
+            os.path.join("./static/images/icon", filename)
+            save_path = os.path.join("./static/images/icon", filename)
+            # ***ファイル保存***
+            img.save(save_path, quality=90)
 
-                icon = filename
-                sql = (
-                    'UPDATE user SET name = "'
-                    + name
-                    + '", profile_image = "'
-                    + icon
-                    + '", profile_detail = "'
-                    + detail
-                    + '" WHERE id = "'
-                    + my_id
-                    + '";'
-                )
-                print(sql)
-                try:
-                    dbop = DbOP("user")
-                    dbop.commit(sql)
-                    dbop.close()
-                    session["icon"] = icon
-                    return render_template("profileUp.html", toggle=toggle)
-                except mysql.connector.errors.ProgrammingError as e:
-                    print("***DB接続エラー***")
-                    print(type(e))
-                    print(e)
-                except Exception as e:
-                    print("***システム運行プログラムエラー***")
-                    print(type(e))
-                    print(e)
+            icon = filename
+            print(icon)
+            sql = (
+                'UPDATE user SET name = "'
+                + name
+                + '", profile_image = "'
+                + icon
+                + '", profile_detail = "'
+                + detail
+                + '" WHERE id = "'
+                + my_id
+                + '";'
+            )
+            print(sql)
+            try:
+                dbop = DbOP("user")
+                dbop.commit(sql)
+                dbop.close()
+                session["userIcon"] = icon
+                return redirect("/user")
+            except mysql.connector.errors.ProgrammingError as e:
+                print("***DB接続エラー***")
+                print(type(e))
+                print(e)
+            except Exception as e:
+                print("***システム運行プログラムエラー***")
+                print(type(e))
+                print(e)
 
     else:
         test = {}

@@ -554,6 +554,27 @@ main #postArea .post .imageArea {
 main #postArea .post .imageArea img {
   width: 100vw;
 }
+main #postArea .post .detailUp {
+  display: flex;
+  background-color: gray;
+  color: white;
+  padding: 0.5vh 0;
+  height: 3vh;
+}
+main #postArea .post .detailUp .detailUpLeft {
+  width: 60vw;
+  padding-left: 2vw;
+}
+main #postArea .post .detailUp .detailUpRight {
+  width: 40vw;
+}
+main #postArea .post .detailUp .detailUpRight p {
+  position: relative;
+}
+main #postArea .post .detailUp .detailUpRight p span {
+  position: absolute;
+  right: 2vw;
+}
 main #postArea .post .detail {
   height: calc(80vh - 133.3vw);
   display: flex;
