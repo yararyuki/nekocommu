@@ -1,12 +1,15 @@
+@use "_variables.scss" as *;
+
 main {
     height: 80vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    background-color: gray;
 
     #user {
         height: 20vh;
         width: 100vw;
-        background-color: aqua;
+        background-color: white;
 
         #user-top {
             height: 10vh;
@@ -73,7 +76,7 @@ main {
 
             #detail {
                 height: 7vh;
-                background-color: bisque;
+                background-color: white;
                 padding: 1vh;
             }
 
@@ -95,7 +98,7 @@ main {
         height: 7vh;
         width: 100vw;
         padding: 1vh;
-        background-color: purple;
+        background-color: whitesmoke;
         overflow-x: auto;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -105,16 +108,20 @@ main {
             height: 5vh;
             width: auto;
             line-height: 5vh;
-            background-color: aliceblue;
+            background-color: rgb(213, 213, 213);
             margin-left: 5vw;
             padding: 0 2vh;
             border-radius: 30px;
             text-align: center;
         }
-        .tag.is-active{
-            background-color: gold;
+
+        .tag.is-active {
+            background-color: $bgColor;
+            color: #fff;
+            text-shadow: 0 0 2px black;
         }
     }
+
     #postArea {
 
         height: auto;

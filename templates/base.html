@@ -13,7 +13,9 @@
 
     <header>
         <div id="logoArea">
-            <p><img src="/static/images/material/logo.png" alt=""></p>
+            <form action="/">
+                <input type="image" src="/static/images/material/logo.png">
+            </form>
             <h1>ねここみゅ</h1>
         </div>
         <div id="navArea">
@@ -31,6 +33,11 @@
                     <ul>
                         {% if "userId" in session %}
                         <li>
+                            <form action="/profile/1" method="post">
+                                <input type="submit" value="プロフィール">
+                            </form>
+                        </li>
+                        <li>
                             <form action="/signout">
                                 <input type="submit" value="ログアウト">
                             </form>
@@ -41,12 +48,13 @@
                                 <input type="submit" value="ログイン">
                             </form>
                         </li>
-                        {% endif %}
                         <li>
                             <form action="/">
                                 <input type="submit" value="項目欄">
                             </form>
                         </li>
+                        {% endif %}
+                        
                         <li>
                             <form action="/">
                                 <input type="submit" value="項目欄">

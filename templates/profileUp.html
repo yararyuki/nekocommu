@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}post{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/postStyle.css">
+{% endblock %}
+{% block main %}
+<!-- <main>
+    {% if toggle == 1 %}
+    <form action="/" id="backBtn">
+        <input type="submit" value="&lt;もどる">
+    </form>
+    <h1>プロフィール編集</h1>
+    <form action="/profile" method="post" enctype="multipart/form-data" id="selectForm">
+        <div id="post">
+            <label class="img_label">
+                <input type="file" name="file" class="file" onchange="previewImage(this);">写真を選択する
+            </label>
+            <div class="photo_Area">
+                <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            </div>
+            <div class="detail_Area">
+                <p class="detail_title">名前</p>
+                <input type="text" class="detail" name="name" maxlength="60">
+            </div>
+            <div class="detail_Area">
+                <p class="detail_title">自己紹介</p>
+                <textarea class="detail" name="detail" cols="10" rows="10" maxlength="60"></textarea>
+            </div>
+            <div class="post_Area">
+                <input type="submit" value="送信" class="post_value">
+            </div>
+        </div>
+    </form>
+    {% elif toggle == 2 %}
+    <div id="resultMain">
+        <h1>寄付しました</h1>
+        <form action="/" id="resultMainBtn">
+            <input type="submit" value="もどる">
+        </form>
+    </div>
+    {% endif %}
+</main> -->
+<main>
+    <h1>プロフィール編集</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data" id="selectForm">
+        <div class="post">
+            <label class="img_label">
+                <input type="file" name="file" class="file" onchange="previewImage(this);">写真を選択する
+            </label>
+            <div class="photo_Area">
+                <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            </div>
+            <div class="detail_Area">
+                <p class="detail_title">名前</p>
+                <input type="text" name="name" maxlength="60">
+            </div>
+            <div class="detail_Area">
+                <p class="detail_title">詳細</p>
+                <textarea class="detail" name="detail" cols="10" rows="10" maxlength="200"></textarea>
+            </div>
+            <div class="post_Area">
+                <input type="submit" value="送信" class="post_value">
+            </div>
+        </div>
+    </form>
+</main>
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+<script src="/static/js/post.js"></script>
+{% endblock %}

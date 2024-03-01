@@ -241,15 +241,12 @@ header #logoArea {
   width: 60vw;
   display: flex;
 }
-header #logoArea p {
+header #logoArea input {
   background-color: white;
   height: 6vh;
   width: 6vh;
   margin-right: 1vh;
   overflow: hidden;
-}
-header #logoArea p img {
-  width: 100%;
 }
 header #logoArea h1 {
   background-color: white;
@@ -434,11 +431,12 @@ main {
   height: 80vh;
   overflow-y: scroll;
   overflow-x: hidden;
+  background-color: gray;
 }
 main #user {
   height: 20vh;
   width: 100vw;
-  background-color: aqua;
+  background-color: white;
 }
 main #user #user-top {
   height: 10vh;
@@ -494,7 +492,7 @@ main #user #user-bottom {
 }
 main #user #user-bottom #detail {
   height: 7vh;
-  background-color: bisque;
+  background-color: white;
   padding: 1vh;
 }
 main #user #user-bottom #followArea {
@@ -510,7 +508,7 @@ main .tag_Area {
   height: 7vh;
   width: 100vw;
   padding: 1vh;
-  background-color: purple;
+  background-color: whitesmoke;
   overflow-x: auto;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
@@ -520,14 +518,16 @@ main .tag_Area .tag {
   height: 5vh;
   width: auto;
   line-height: 5vh;
-  background-color: aliceblue;
+  background-color: rgb(213, 213, 213);
   margin-left: 5vw;
   padding: 0 2vh;
   border-radius: 30px;
   text-align: center;
 }
 main .tag_Area .tag.is-active {
-  background-color: gold;
+  background-color: #ffcc77;
+  color: #fff;
+  text-shadow: 0 0 2px black;
 }
 main #postArea {
   height: auto;

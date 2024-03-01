@@ -241,15 +241,12 @@ header #logoArea {
   width: 60vw;
   display: flex;
 }
-header #logoArea p {
+header #logoArea input {
   background-color: white;
   height: 6vh;
   width: 6vh;
   margin-right: 1vh;
   overflow: hidden;
-}
-header #logoArea p img {
-  width: 100%;
 }
 header #logoArea h1 {
   background-color: white;
@@ -441,7 +438,7 @@ main .post {
   padding-top: 2vh;
   position: relative;
 }
-main .post label {
+main .post .img_label {
   display: flex;
   width: 90vw;
   color: #ffffff;
@@ -450,7 +447,7 @@ main .post label {
   margin: 0 auto;
   font-size: 2rem;
 }
-main .post label .file {
+main .post .img_label .file {
   display: none;
 }
 main .post .photo_Area {
@@ -472,16 +469,29 @@ main .post .tag_Area {
   background-color: purple;
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: scroll;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
-main .post .tag_Area .tag {
+main .post .tag_Area .tag_name label {
+  display: inline-block;
   height: 5vh;
   width: auto;
+  line-height: 5vh;
   background-color: aliceblue;
   margin-left: 5vw;
   padding: 0 2vh;
   border-radius: 30px;
   text-align: center;
+  color: black;
+  font-size: 1rem;
+}
+main .post .tag_Area .tag_name input:checked + label {
+  background: #ffcc77;
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 0 2px black;
+  box-shadow: inset 0 0 2vh white;
 }
 main .post .detail_Area {
   height: 10vh;

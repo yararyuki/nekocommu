@@ -8,22 +8,25 @@
 {% block main %}
 
 <main>
-    <form action="/">
+    <form action="/upload" method="post" enctype="multipart/form-data" id="selectForm">
         <div class="post">
-            <label>
-                <input type="file" class="file" onchange="previewImage(this);">写真を選択する
+            <label class="img_label">
+                <input type="file" name="file" class="file" onchange="previewImage(this);">写真を選択する
             </label>
             <div class="photo_Area">
                 <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
             </div>
             <div class="tag_Area">
-                {% for rec in tag_tbl %}
-                <input type="submit" value='{{ rec }}' class="button tag">
-                {% endfor %}
+                <div class="tag_name">
+                    {% for tag in tag_tbl %}
+                    <input type="radio" name="tag_name" value="{{ tag }}" id="{{ tag }}">
+                    <label for="{{ tag }}">{{ tag }}</label>
+                    {% endfor %}
+                </div>
             </div>
             <div class="detail_Area">
                 <p class="detail_title">詳細</p>
-                <textarea class="detail" name="message" cols="10" rows="10" maxlength="200"></textarea>
+                <textarea class="detail" name="detail" cols="10" rows="10" maxlength="200"></textarea>
             </div>
             <div class="post_Area">
                 <input type="submit" value="送信" class="post_value">
@@ -36,4 +39,5 @@
 {% block js %}
 {{ super() }}
 <script src="/static/js/menu.js"></script>
+<script src="/static/js/post.js"></script>
 {% endblock %}

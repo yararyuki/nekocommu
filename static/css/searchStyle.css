@@ -241,15 +241,12 @@ header #logoArea {
   width: 60vw;
   display: flex;
 }
-header #logoArea p {
+header #logoArea input {
   background-color: white;
   height: 6vh;
   width: 6vh;
   margin-right: 1vh;
   overflow: hidden;
-}
-header #logoArea p img {
-  width: 100%;
 }
 header #logoArea h1 {
   background-color: white;

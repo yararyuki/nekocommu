@@ -13,6 +13,7 @@ app = Flask(__name__)
 app.secret_key = "心がカギ"
 app.permanent_session_lifetime = timedelta(hours=24)
 app.config["MAX_CONTENT_LENGTH"] = 8**20
+Extension = set(["png", "jpg", "gif"])
 
 
 # Gmailの設定
@@ -166,6 +167,35 @@ class DbOP:
         cur.close()
         return res
 
+    # コメント送信
+    def update(self, comment, post_id):
+
+        sql = (
+            "UPDATE `"
+            + self.__table
+            + "` SET `comment` = '"
+            + comment
+            + "' WHERE post_id = "
+            + post_id
+            + ""
+        )
+        print(sql)
+        cur = self.__con.cursor()
+        cur.execute(sql)
+        self.__con.commit()
+        cur.close()
+
+    # コメントだけ取り出す
+    def commentTbl(self, post_id):
+        sql = (
+            "SELECT comment FROM " + self.__table + " WHERE post_id = " + post_id + ";"
+        )
+        print(sql)
+        cur = self.__con.cursor(dictionary=True)
+        cur.execute(sql)
+        res = cur.fetchall()
+        cur.close()
+
     # 寄付ポイント処理
     def point(self, post_id, point, user_id, my_id):
         sql = (
@@ -198,6 +228,14 @@ class DbOP:
         cur.execute(sql)
         self.__con.commit()
         sql = "UPDATE user SET point = point -" + point + " WHERE ID ='" + my_id + "';"
+        print(sql)
+        cur = self.__con.cursor()
+        cur.execute(sql)
+        self.__con.commit()
+        cur.close()
+
+    # コミット
+    def commit(self, sql):
         print(sql)
         cur = self.__con.cursor()
         cur.execute(sql)
@@ -254,8 +292,13 @@ def home():
 
         if "userId" in session:
             icon = session["userIcon"]
-            point = session["userPoint"]
             id = session["userId"]
+            dbop = DbOP("user")
+            userpoint = dbop.user(id)
+            dbop.close()
+            for poi in userpoint:
+                point = poi["point"]
+                session["userPoint"] = point
             return render_template(
                 "home.html", result=result, icon=icon, point=point, id=id
             )
@@ -627,6 +670,306 @@ def donation(post_id, number):
     else:
         test = {}
         return render_template("login.html", test=test)
+
+
+@app.route("/upload", methods=["POST"])
+def upload():
+    if "userId" in session:
+        id = session["userId"]
+        icon = session["userIcon"]
+        point = session["userPoint"]
+        vtbl = {"file": "写真", "detail": "詳細", "tag_name": "タグ"}
+
+        # ***結果格納TBL***
+        result = {}
+        # ***エラー受信***
+        errmsg = {}
+
+        # ***データ受信***
+        result = request.form
+        # ***空白・未入力チェック***
+        err_cnt = 0
+        for key, value in result.items():
+            if not value:
+                errmsg[key] = vtbl[key] + "が入力されていません"
+                err_cnt += 1
+            else:
+                errmsg[key] = ""
+
+        print("********************空白**********")
+        # ***画像ファイル名チェック***
+        # if 'file' not in request.files:
+        #     return print('No file part')
+        file = request.files["file"]
+        fileName = file.filename
+        print(fileName)
+        if fileName:
+            if not extension_check(fileName):
+                print("ファイルの容量が多い")
+
+        # ***画像加工＆保存処理***
+
+        try:
+            # ***保存日時作成
+            savedata = datetime.now().strftime("%Y%m%d_%H%M%S_")
+            # ***安全な保存ファイル名作成
+            fileName = id + savedata + secure_filename(fileName)
+
+            # ***保存ファイル名作成
+            save_path1 = os.path.join("./static/images/post/", fileName)
+            print("***保存された*********")
+            print(fileName)
+
+            # ***画像ファイル名を開く
+            img = Image.open(file)
+
+            # ***画像ファイル保存
+            img.save(save_path1, quality=90)
+        except FileNotFoundError as e:
+            print("*****画像ファイル処理エラー*****")
+            print(type(e))
+            print(e)
+            errmsg = {
+                "msg1": "画像ファイル処理エラー",
+                "msg2": "ファイルの保存に失敗しました",
+            }
+            return render_template(
+                "post.html",
+                result=result,
+                icon=icon,
+                id=id,
+                point=point,
+            )
+
+        except Exception as e:
+            print("*****システム運航プログラムエラー*****")
+            print(type(e))
+            print(e)
+        # INSERT SQL(val)
+        print(result)
+        sql = (
+            "'','"
+            + id
+            + "','"
+            + fileName
+            + "','','"
+            + result["detail"]
+            + "','"
+            + result["tag_name"]
+            + "'"
+        )
+        try:
+            dbop = DbOP("post")
+            print(sql)
+            dbop.insTbl(sql)
+            dbop.close()
+
+            # 結果出力処理
+            return redirect("/")
+            # return render_template("home.html",
+            #     result=result,
+            #     icon=icon,
+            #     id=id,
+            #     point=point)
+
+        except mysql.connector.errors.ProgrammingError as e:
+            print("DB接続エラー")
+            print(type(e))
+            print(e)
+        except Exception as e:
+            print("システム運行プログラムエラー")
+            print(type(e))
+            print(e)
+            print("++++++++++++++++++++++++++++++++++++++++")
+    else:
+        test = {}
+        return render_template("login.html", test=test)
+
+
+@app.route("/comment/<post_id>", methods=["POST"])
+def comment(post_id):
+    if "userId" in session:
+        try:
+            result = request.form.get("comment")
+            print(result)
+            dbop = DbOP("post")
+            comment = dbop.commentTbl(post_id)
+            dbop.close()
+            # なんでとれへんのかわからん
+            print(comment)
+            if comment is not None:
+                result = comment + result
+            else:
+                result = result
+
+            dbop = DbOP("post")
+            dbop.update(result, post_id)
+            dbop.close()
+            # 結果出力処理
+            return redirect("/")
+        except mysql.connector.errors.ProgrammingError as e:
+            print("DB接続エラー")
+            print(type(e))
+            print(e)
+        except Exception as e:
+            print("システム運行プログラムエラー")
+            print(type(e))
+            print(e)
+            print("++++++++++++++++++++++++++++++++++++++++")
+    else:
+        test = {}
+        return render_template("login.html", test=test)
+
+
+@app.route("/profile/<number>", methods=["POST"])
+def profile(number):
+    print(number)
+    if "userId" in session:
+        if number == "1":
+            toggle = 1
+            return render_template("profileUp.html", toggle=toggle)
+        elif number == "2":
+            toggle = 2
+            name = request.form["name"]
+            detail = request.form["detail"]
+            my_id = session["userId"]
+            print(name)
+
+            # ***ファイルオブジェクト取得***
+            file = request.files["file"]
+
+            filename = file.filename
+            # ***ファイル受信チェック***
+            if not filename:
+                sql = (
+                    'UPDATE user SET name= "'
+                    + name
+                    + '", profile_detail = "'
+                    + detail
+                    + '" WHERE id = "'
+                    + my_id
+                    + '";'
+                )
+                print(sql)
+                try:
+                    dbop = DbOP("user")
+                    dbop.commit(sql)
+                    dbop.close()
+                except mysql.connector.errors.ProgrammingError as e:
+                    print("***DB接続エラー***")
+                    print(type(e))
+                    print(e)
+                except Exception as e:
+                    print("***システム運行プログラムエラー***")
+                    print(type(e))
+                    print(e)
+
+            else:
+                directory_path = "static/images/icon/"
+                file_name = session["userIcon"]
+                file_path = os.path.join(directory_path, file_name)
+                if not file_name == "unknownUser.jpg":
+                    os.remove(file_path)
+
+                # ***ファイルオープン***
+                rec = extension_check(filename)
+                if rec == "True":
+                    img = Image.open(file)
+                    img = crop_max_square(img)
+                    # ***日時情報の取得***
+                    savedate = datetime.now().strftime("%Y%m%d_%H%M%S_")
+                    # ***安全なファイル名に変換***
+                    filename = savedate + secure_filename(filename)
+                    # ***保存用フルパス作成***
+                    os.path.join("./static/images/icon", filename)
+                    save_path = os.path.join("./static/images/icon", filename)
+                    # ***ファイル保存***
+
+                    img.save(save_path, quality=90)
+
+                icon = filename
+                sql = (
+                    'UPDATE user SET name = "'
+                    + name
+                    + '", profile_image = "'
+                    + icon
+                    + '", profile_detail = "'
+                    + detail
+                    + '" WHERE id = "'
+                    + my_id
+                    + '";'
+                )
+                print(sql)
+                try:
+                    dbop = DbOP("user")
+                    dbop.commit(sql)
+                    dbop.close()
+                    session["icon"] = icon
+                    return render_template("profileUp.html", toggle=toggle)
+                except mysql.connector.errors.ProgrammingError as e:
+                    print("***DB接続エラー***")
+                    print(type(e))
+                    print(e)
+                except Exception as e:
+                    print("***システム運行プログラムエラー***")
+                    print(type(e))
+                    print(e)
+
+    else:
+        test = {}
+        return render_template("login.html", test=test)
+
+
+def extension_check(filename):
+
+    # ***ドット検出
+    if "." in filename:
+        # ***ドットで分割（右から１回のみ分割）
+        strtbl = filename.rsplit(".", 1)
+        # ***拡張子のみを取得
+        ext = strtbl[1]
+
+        # ***拡張子を小文字に変換
+        ext = ext.lower()
+        # ***拡張子が許可されているか
+        if ext in Extension:
+            return 1
+
+    return 0
+
+
+def image_reduction(img, maxsize):
+
+    # ***新サイズ算出（maxsizeを超えた場合のみ処理）
+    if img.width > maxsize or img.height > maxsize:
+
+        if img.width >= img.height:
+            width = maxsize
+            height = int(img.height * (width / img.width))
+        else:
+            height = maxsize
+            width = int(img.width * (height / img.height))
+
+        # ***画像をリサイズする
+        img = img.resize((width, height))
+
+    return img
+
+
+def crop_center(pil_img, crop_width, crop_height):
+    img_width, img_height = pil_img.size
+    return pil_img.crop(
+        (
+            (img_width - crop_width) // 2,
+            (img_height - crop_height) // 2,
+            (img_width + crop_width) // 2,
+            (img_height + crop_height) // 2,
+        )
+    )
+
+
+def crop_max_square(pil_img):
+    return crop_center(pil_img, min(pil_img.size), min(pil_img.size))
 
 
 if __name__ == "__main__":

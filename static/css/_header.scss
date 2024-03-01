@@ -28,16 +28,12 @@ header {
         width: 60vw;
         display: flex;
 
-        p {
+        input {
             background-color: $accentColor;
             height: 6vh;
             width: 6vh;
             margin-right: 1vh;
             overflow: hidden;
-
-            img {
-                width: 100%;
-            }
         }
 
         h1 {
