@@ -944,6 +944,49 @@ def profileUp():
         return render_template("login.html", test=test)
 
 
+@app.route("/catTagAdd")
+def catTagAdd():
+    icon = session["userIcon"]
+    point = session["userPoint"]
+    my_id = session["userId"]
+    try:
+        dbop = DbOP("user")
+        result = dbop.user(my_id)
+        dbop.close()
+        for rec in result:
+            tag = rec["tag_name"]
+
+        if " " in tag:
+            tag_tbl = tag.split(" ")
+        else:
+            tag_tbl = {tag}
+            print(tag_tbl)
+        return render_template(
+            "catTagAdd.html",
+            icon=icon,
+            point=point,
+            my_id=my_id,
+            result=result,
+            tag_tbl=tag_tbl,
+        )
+    except mysql.connector.errors.ProgrammingError as e:
+        print("***DB接続エラー***")
+        print(type(e))
+        print(e)
+    except Exception as e:
+        print("***システム運行プログラムエラー***")
+        print(type(e))
+        print(e)
+
+
+@app.route("/catTagAddProcess")
+def catTagAddProcess():
+    icon = session["userIcon"]
+    point = session["userPoint"]
+    my_id = session["userId"]
+    return redirect("/")
+
+
 def extension_check(filename):
 
     # ***ドット検出

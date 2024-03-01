@@ -438,6 +438,11 @@ main h1 {
   text-align: center;
   padding-top: 1vh;
 }
+main h2 {
+  font-size: 8vw;
+  text-align: center;
+  padding-top: 1vh;
+}
 main .post {
   width: 100vw;
   padding-top: 1vh;
