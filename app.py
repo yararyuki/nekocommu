@@ -979,12 +979,33 @@ def catTagAdd():
         print(e)
 
 
-@app.route("/catTagAddProcess")
+@app.route("/catTagAddProcess", methods=["POST"])
 def catTagAddProcess():
     icon = session["userIcon"]
-    point = session["userPoint"]
     my_id = session["userId"]
-    return redirect("/")
+    name = request.form["name"]
+    try:
+        dbop = DbOP("user")
+        result = dbop.user(my_id)
+        for rec in result:
+            tag = rec["tag_name"]
+        name = tag + " " + name
+        print(name)
+        sql = 'UPDATE user SET tag_name = "' + name + '" WHERE id = "' + my_id + '";'
+        print(sql)
+        dbop = DbOP("user")
+        dbop.commit(sql)
+        dbop.close()
+        return redirect("/")
+
+    except mysql.connector.errors.ProgrammingError as e:
+        print("***DB接続エラー***")
+        print(type(e))
+        print(e)
+    except Exception as e:
+        print("***システム運行プログラムエラー***")
+        print(type(e))
+        print(e)
 
 
 def extension_check(filename):

@@ -4,7 +4,7 @@ main {
     height: 80vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    background-color: gray;
+    background-color: $bgSubColor;
 
     #user {
         height: 20vh;
@@ -15,6 +15,7 @@ main {
             height: 10vh;
             display: flex;
             overflow: hidden;
+            background-color: $bgSubColor;
 
             #icon {
                 width: 8vh;
@@ -73,10 +74,11 @@ main {
 
         #user-bottom {
             height: 10vh;
+            background-color: $bgSubColor;
 
             #detail {
                 height: 7vh;
-                background-color: white;
+                background-color: $bgSubColor;
                 padding: 1vh;
             }
 
@@ -98,7 +100,7 @@ main {
         height: 7vh;
         width: 100vw;
         padding: 1vh;
-        background-color: whitesmoke;
+        background-color: $labelColor;
         overflow-x: auto;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -126,7 +128,6 @@ main {
 
         height: auto;
         width: 100%;
-        background-color: gray;
         display: flex;
         flex-wrap: wrap;
 
@@ -134,11 +135,12 @@ main {
         .post {
             height: 32vw;
             width: 32vw;
-            background-color: red;
+            background-color: white;
             margin: .66vw;
             overflow: hidden;
-
             position: relative;
+            border: 1px solid gray;
+            box-shadow: 1px 1px 3px black;
 
             img {
                 width: 100%;

@@ -1,3 +1,5 @@
+@use "_variables.scss" as *;
+
 main {
     height: 80vh;
     overflow: hidden;
@@ -39,13 +41,15 @@ main {
 
             .box {
                 margin-top: 5vh;
-                input{
+
+                input {
                     font-size: 2em;
                     background-color: grey;
                     padding: 1vh 2vh;
                 }
             }
-            .down{
+
+            .down {
                 margin-top: 1vh;
             }
         }

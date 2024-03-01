@@ -242,19 +242,19 @@ header #logoArea {
   display: flex;
 }
 header #logoArea input {
-  background-color: white;
+  background-color: #f1dfbf;
   height: 6vh;
   width: 6vh;
   margin-right: 1vh;
   overflow: hidden;
 }
 header #logoArea h1 {
-  background-color: white;
+  background-color: #f1dfbf;
   padding: 0 1.5em;
   line-height: 6vh;
 }
 header #navArea {
-  width: 40vw;
+  width: 45vw;
   display: flex;
   justify-content: space-between;
   /*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
@@ -269,7 +269,7 @@ header #navArea #point {
   width: 50%;
 }
 header #navArea #point h2 {
-  background-color: white;
+  background-color: #f1dfbf;
   height: 3vh;
   width: 3vh;
   border-radius: 50%;
@@ -284,13 +284,13 @@ header #navArea #point h2 img {
 header #navArea #point p {
   line-height: 6vh;
   font-size: 1.5vh;
-  margin-left: 1vh;
+  margin-right: -1.5vh;
 }
 header #navArea .openbtn {
   /*ボタン内側の基点となるためrelativeを指定。
   追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
   position: relative;
-  background: white;
+  background: #f1dfbf;
   cursor: pointer;
   width: 6vh;
   height: 6vh;
@@ -372,7 +372,6 @@ header #navArea #g-nav ul {
   /*ナビゲーション天地中央揃え*/
   position: absolute;
   z-index: 999;
-  top: 25%;
   left: 25%;
   transform: translate(-50%, -50%);
 }
@@ -382,7 +381,7 @@ header #navArea #g-nav ul li {
 }
 header #navArea #g-nav ul li input {
   color: #333;
-  background-color: white;
+  background-color: #f1dfbf;
   text-decoration: none;
   padding: 10px;
   display: block;
@@ -413,7 +412,7 @@ footer ul {
 footer ul li {
   height: 15vw;
   width: 15vw;
-  background-color: white;
+  background-color: #f1dfbf;
   border-radius: 50%;
 }
 footer ul li input {
@@ -429,7 +428,9 @@ footer ul li input img {
 
 main {
   width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
+  background-color: #f1dfbf;
 }
 main #backBtn {
   background-color: #ffcc77;
@@ -474,7 +475,6 @@ main #selectPoint h2 span {
   display: block;
   font-size: 3vh;
   line-height: 3vh;
-  margin-left: -1vh;
 }
 main #selectPoint h2 span img {
   height: 3vh;
@@ -522,6 +522,7 @@ main #selectPoint #checkBtn a {
   font-size: 10vw;
   padding: 1vh 2vh;
   border: 1px solid black;
+  background-color: white;
 }
 main #selectPoint #info {
   display: none;
@@ -582,6 +583,7 @@ main #resultMain #resultMainBtn input {
   margin: 0 auto;
   padding: 1vh;
   border: 1px solid black;
+  background-color: white;
 }
 
 .modaal-close:after,

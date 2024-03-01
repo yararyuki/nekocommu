@@ -242,19 +242,19 @@ header #logoArea {
   display: flex;
 }
 header #logoArea input {
-  background-color: white;
+  background-color: #f1dfbf;
   height: 6vh;
   width: 6vh;
   margin-right: 1vh;
   overflow: hidden;
 }
 header #logoArea h1 {
-  background-color: white;
+  background-color: #f1dfbf;
   padding: 0 1.5em;
   line-height: 6vh;
 }
 header #navArea {
-  width: 40vw;
+  width: 45vw;
   display: flex;
   justify-content: space-between;
   /*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
@@ -269,7 +269,7 @@ header #navArea #point {
   width: 50%;
 }
 header #navArea #point h2 {
-  background-color: white;
+  background-color: #f1dfbf;
   height: 3vh;
   width: 3vh;
   border-radius: 50%;
@@ -284,13 +284,13 @@ header #navArea #point h2 img {
 header #navArea #point p {
   line-height: 6vh;
   font-size: 1.5vh;
-  margin-left: 1vh;
+  margin-right: -1.5vh;
 }
 header #navArea .openbtn {
   /*ボタン内側の基点となるためrelativeを指定。
   追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
   position: relative;
-  background: white;
+  background: #f1dfbf;
   cursor: pointer;
   width: 6vh;
   height: 6vh;
@@ -372,7 +372,6 @@ header #navArea #g-nav ul {
   /*ナビゲーション天地中央揃え*/
   position: absolute;
   z-index: 999;
-  top: 25%;
   left: 25%;
   transform: translate(-50%, -50%);
 }
@@ -382,7 +381,7 @@ header #navArea #g-nav ul li {
 }
 header #navArea #g-nav ul li input {
   color: #333;
-  background-color: white;
+  background-color: #f1dfbf;
   text-decoration: none;
   padding: 10px;
   display: block;
@@ -413,7 +412,7 @@ footer ul {
 footer ul li {
   height: 15vw;
   width: 15vw;
-  background-color: white;
+  background-color: #f1dfbf;
   border-radius: 50%;
 }
 footer ul li input {
@@ -431,7 +430,7 @@ main {
   height: 80vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  background-color: gray;
+  background-color: #f1dfbf;
 }
 main #user {
   height: 20vh;
@@ -442,6 +441,7 @@ main #user #user-top {
   height: 10vh;
   display: flex;
   overflow: hidden;
+  background-color: #f1dfbf;
 }
 main #user #user-top #icon {
   width: 8vh;
@@ -489,10 +489,11 @@ main #user #user-top #data p span {
 }
 main #user #user-bottom {
   height: 10vh;
+  background-color: #f1dfbf;
 }
 main #user #user-bottom #detail {
   height: 7vh;
-  background-color: white;
+  background-color: #f1dfbf;
   padding: 1vh;
 }
 main #user #user-bottom #followArea {
@@ -508,7 +509,7 @@ main .tag_Area {
   height: 7vh;
   width: 100vw;
   padding: 1vh;
-  background-color: whitesmoke;
+  background-color: #DC8F45;
   overflow-x: auto;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
@@ -532,17 +533,18 @@ main .tag_Area .tag.is-active {
 main #postArea {
   height: auto;
   width: 100%;
-  background-color: gray;
   display: flex;
   flex-wrap: wrap;
 }
 main #postArea .post {
   height: 32vw;
   width: 32vw;
-  background-color: red;
+  background-color: white;
   margin: 0.66vw;
   overflow: hidden;
   position: relative;
+  border: 1px solid gray;
+  box-shadow: 1px 1px 3px black;
 }
 main #postArea .post img {
   width: 100%;

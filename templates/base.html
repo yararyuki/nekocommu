@@ -22,7 +22,7 @@
             <a href="#" id="point">
                 <h2><img src="/static/images/material/point.png" alt=""></h2>
                 {% if "userId" in session %}
-                <p>{{point}}</p>
+                <p>{{point}} NP</p>
                 {% else %}
                 <p>ないよ</p>
                 {% endif %}
@@ -53,24 +53,31 @@
                                 <input type="submit" value="ログイン">
                             </form>
                         </li>
-                        <li>
-                            <form action="/">
-                                <input type="submit" value="項目欄">
-                            </form>
-                        </li>
-                        <li>
-                            <form action="/">
-                                <input type="submit" value="項目欄">
-                            </form>
-                        </li>
                         {% endif %}
 
 
                         <li>
                             <form action="/">
-                                <input type="submit" value="項目欄">
+                                <input type="submit" value="お知らせ">
                             </form>
                         </li>
+                        <li>
+                            <form action="/">
+                                <input type="submit" value="よくある質問">
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/">
+                                <input type="submit" value="お問い合わせ">
+                            </form>
+                        </li>
+
+                        <li>
+                            <form action="/">
+                                <input type="submit" value="運営会社">
+                            </form>
+                        </li>
+
                     </ul>
                 </div>
             </nav>

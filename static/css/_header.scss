@@ -29,7 +29,7 @@ header {
         display: flex;
 
         input {
-            background-color: $accentColor;
+            background-color: $bgSubColor;
             height: 6vh;
             width: 6vh;
             margin-right: 1vh;
@@ -37,30 +37,33 @@ header {
         }
 
         h1 {
-            background-color: $accentColor;
+            background-color: $bgSubColor;
             padding: 0 1.5em;
             line-height: 6vh;
         }
     }
 
     #navArea {
-        width: 40vw;
+        width: 45vw;
         display: flex;
         justify-content: space-between;
+
         #point {
             display: flex;
             margin-left: 1vh;
             justify-content: space-between;
             width: 50%;
+
             h2 {
-                background-color: $accentColor;
+                background-color: $bgSubColor;
                 height: 3vh;
                 width: 3vh;
                 border-radius: 50%;
                 margin-top: 1.5vh;
                 text-align: center;
                 overflow: hidden;
-                img{
+
+                img {
                     height: 100%;
                     width: 100%;
                 }
@@ -69,7 +72,7 @@ header {
             p {
                 line-height: 6vh;
                 font-size: 1.5vh;
-                margin-left: 1vh;
+                margin-right: -1.5vh;
             }
         }
 
@@ -78,7 +81,7 @@ header {
             /*ボタン内側の基点となるためrelativeを指定。
 追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
             position: relative;
-            background: $accentColor;
+            background: $bgSubColor;
             cursor: pointer;
             width: 6vh;
             height: 6vh;
@@ -176,7 +179,6 @@ header {
             /*ナビゲーション天地中央揃え*/
             position: absolute;
             z-index: 999;
-            top: 25%;
             left: 25%;
             transform: translate(-50%, -50%);
 
@@ -186,7 +188,7 @@ header {
 
                 input {
                     color: #333;
-                    background-color: $accentColor;
+                    background-color: $bgSubColor;
                     text-decoration: none;
                     padding: 10px;
                     display: block;

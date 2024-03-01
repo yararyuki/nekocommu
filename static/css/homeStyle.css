@@ -242,19 +242,19 @@ header #logoArea {
   display: flex;
 }
 header #logoArea input {
-  background-color: white;
+  background-color: #f1dfbf;
   height: 6vh;
   width: 6vh;
   margin-right: 1vh;
   overflow: hidden;
 }
 header #logoArea h1 {
-  background-color: white;
+  background-color: #f1dfbf;
   padding: 0 1.5em;
   line-height: 6vh;
 }
 header #navArea {
-  width: 40vw;
+  width: 45vw;
   display: flex;
   justify-content: space-between;
   /*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
@@ -269,7 +269,7 @@ header #navArea #point {
   width: 50%;
 }
 header #navArea #point h2 {
-  background-color: white;
+  background-color: #f1dfbf;
   height: 3vh;
   width: 3vh;
   border-radius: 50%;
@@ -284,13 +284,13 @@ header #navArea #point h2 img {
 header #navArea #point p {
   line-height: 6vh;
   font-size: 1.5vh;
-  margin-left: 1vh;
+  margin-right: -1.5vh;
 }
 header #navArea .openbtn {
   /*ボタン内側の基点となるためrelativeを指定。
   追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
   position: relative;
-  background: white;
+  background: #f1dfbf;
   cursor: pointer;
   width: 6vh;
   height: 6vh;
@@ -372,7 +372,6 @@ header #navArea #g-nav ul {
   /*ナビゲーション天地中央揃え*/
   position: absolute;
   z-index: 999;
-  top: 25%;
   left: 25%;
   transform: translate(-50%, -50%);
 }
@@ -382,7 +381,7 @@ header #navArea #g-nav ul li {
 }
 header #navArea #g-nav ul li input {
   color: #333;
-  background-color: white;
+  background-color: #f1dfbf;
   text-decoration: none;
   padding: 10px;
   display: block;
@@ -413,7 +412,7 @@ footer ul {
 footer ul li {
   height: 15vw;
   width: 15vw;
-  background-color: white;
+  background-color: #f1dfbf;
   border-radius: 50%;
 }
 footer ul li input {
@@ -431,6 +430,7 @@ main {
   height: 80vh;
   overflow-y: scroll;
   overflow-x: hidden;
+  background-color: #f1dfbf;
 }
 main .post {
   width: 100vw;
@@ -462,14 +462,14 @@ main .post .user .user_id {
 main .post .imageArea {
   width: 100vw;
   overflow: hidden;
-  background-color: aquamarine;
+  background-color: #f1dfbf;
 }
 main .post .imageArea img {
   width: 100vw;
 }
 main .post .detailUp {
   display: flex;
-  background-color: gray;
+  background-color: #DC8F45;
   color: white;
   padding: 0.5vh 0;
   height: 3vh;
@@ -491,7 +491,7 @@ main .post .detailUp .detailUpRight p span {
 main .post .detail {
   height: calc(80vh - 133.3vw);
   display: flex;
-  background-color: gray;
+  background-color: #DC8F45;
   padding: 1vh;
 }
 main .post .detail .detailRight {
@@ -516,10 +516,24 @@ main .post .detail .detailRight .detailRight-under .d2 {
   background-color: white;
   margin-right: 1%;
 }
+main .post .detail .detailRight .detailRight-under .d2 a {
+  display: block;
+  text-align: center;
+  margin-top: 1vh;
+}
+main .post .detail .detailRight .detailRight-under .d2 a img {
+  width: 60%;
+}
 main .post .detail .detailRight .detailRight-under .d3 {
   height: 100%;
   width: 100%;
   background-color: white;
+  overflow: hidden;
+  position: relative;
+}
+main .post .detail .detailRight .detailRight-under .d3 form input {
+  margin-top: -1.5vh;
+  width: 100%;
 }
 main .post .detail .detailLeft {
   width: 40vw;

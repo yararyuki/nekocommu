@@ -4,7 +4,7 @@ main {
     height: 80vh;
     overflow-y: scroll;
     overflow-x: hidden;
-
+    background-color: $bgSubColor;
     .searchArea {
         width: 70vw;
         height: 4.5vh;
@@ -142,7 +142,7 @@ main {
             .imageArea {
                 width: 100vw;
                 overflow: hidden;
-                background-color: aquamarine;
+                background-color: $bgSubColor;
 
                 img {
                     width: 100vw;
@@ -151,7 +151,7 @@ main {
 
             .detailUp {
                 display: flex;
-                background-color: gray;
+                background-color: $labelColor;
                 color: white;
                 padding: .5vh 0;
                 height: 3vh;
