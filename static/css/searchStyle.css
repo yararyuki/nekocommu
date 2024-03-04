@@ -452,6 +452,7 @@ main .searchArea .searchText {
   color: #333;
   outline: 0;
   font-size: 15px;
+  background: white;
 }
 main .searchArea .searchText:focus {
   background: #cfe7ff;
