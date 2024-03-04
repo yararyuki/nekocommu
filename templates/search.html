@@ -54,9 +54,13 @@
                 <div class="detailRight">
                     <p class="detailText">{{ rec["detail"] }}</p>
                     <div class="detailRight-under">
-                        <div class="d1"><a href="#">いいね</a></div>
-                        <div class="d2"><a href="#">共有</a></div>
-                        <div class="d3"><a href="#">寄付</a></div>
+                        <div class="d1"><a href="#"><img src="/static/images/material/heart.png" alt=""></a></div>
+                        <div class="d2"><a href="#"><img src="/static/images/material/share.png" alt=""></a></div>
+                        <div class="d3">
+                            <form action="/donation/{{rec['post_id']}}/1" method="post">
+                                <input type="image" value="寄付" src="/static/images/material/donation.png">
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="detailLeft">

@@ -5,6 +5,7 @@ main {
     overflow-y: scroll;
     overflow-x: hidden;
     background-color: $bgSubColor;
+
     .searchArea {
         width: 70vw;
         height: 4.5vh;
@@ -179,7 +180,7 @@ main {
             .detail {
                 height: calc(80vh - 133.3vw);
                 display: flex;
-                background-color: gray;
+                background-color: $labelColor;
                 padding: 1vh;
 
                 .detailRight {
@@ -190,7 +191,7 @@ main {
                         height: 59%;
                         background-color: white;
                         padding: 1vh;
-                        font-size: .7em;
+                        font-size: 1em;
                         margin-bottom: 1%;
                     }
 
@@ -204,12 +205,32 @@ main {
                             aspect-ratio: 1 / 1;
                             background-color: white;
                             margin-right: 1%;
+
+                            a {
+                                display: block;
+                                text-align: center;
+                                margin-top: 1vh;
+
+                                img {
+                                    width: 60%;
+                                }
+                            }
+
                         }
 
                         .d3 {
                             height: 100%;
                             width: 100%;
                             background-color: white;
+                            overflow: hidden;
+                            position: relative;
+
+                            form {
+                                input {
+                                    margin-top: -1.5vh;
+                                    width: 100%;
+                                }
+                            }
                         }
                     }
                 }

@@ -578,7 +578,7 @@ main #postArea .post .detailUp .detailUpRight p span {
 main #postArea .post .detail {
   height: calc(80vh - 133.3vw);
   display: flex;
-  background-color: gray;
+  background-color: #DC8F45;
   padding: 1vh;
 }
 main #postArea .post .detail .detailRight {
@@ -589,7 +589,7 @@ main #postArea .post .detail .detailRight .detailText {
   height: 59%;
   background-color: white;
   padding: 1vh;
-  font-size: 0.7em;
+  font-size: 1em;
   margin-bottom: 1%;
 }
 main #postArea .post .detail .detailRight .detailRight-under {
@@ -603,10 +603,26 @@ main #postArea .post .detail .detailRight .detailRight-under .d2 {
   background-color: white;
   margin-right: 1%;
 }
+main #postArea .post .detail .detailRight .detailRight-under .d1 a,
+main #postArea .post .detail .detailRight .detailRight-under .d2 a {
+  display: block;
+  text-align: center;
+  margin-top: 1vh;
+}
+main #postArea .post .detail .detailRight .detailRight-under .d1 a img,
+main #postArea .post .detail .detailRight .detailRight-under .d2 a img {
+  width: 60%;
+}
 main #postArea .post .detail .detailRight .detailRight-under .d3 {
   height: 100%;
   width: 100%;
   background-color: white;
+  overflow: hidden;
+  position: relative;
+}
+main #postArea .post .detail .detailRight .detailRight-under .d3 form input {
+  margin-top: -1.5vh;
+  width: 100%;
 }
 main #postArea .post .detail .detailLeft {
   width: 40vw;

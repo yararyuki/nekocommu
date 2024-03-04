@@ -516,11 +516,13 @@ main .post .detail .detailRight .detailRight-under .d2 {
   background-color: white;
   margin-right: 1%;
 }
+main .post .detail .detailRight .detailRight-under .d1 a,
 main .post .detail .detailRight .detailRight-under .d2 a {
   display: block;
   text-align: center;
   margin-top: 1vh;
 }
+main .post .detail .detailRight .detailRight-under .d1 a img,
 main .post .detail .detailRight .detailRight-under .d2 a img {
   width: 60%;
 }
