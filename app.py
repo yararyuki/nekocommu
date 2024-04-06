@@ -315,6 +315,106 @@ def home():
         print(e)
 
 
+@app.route("/post_detail/<post_id>", methods=["POST"])
+def post_detail(post_id):
+    try:
+        dbop = DbOP("post")
+        result = dbop.postSolo(post_id)
+        print(result)
+
+        for rec in result:
+            post_user_id = rec["id"]
+        post_user = dbop.user(post_user_id)
+        print(post_user)
+        for pu in post_user:
+            print(pu["profile_image"])
+
+        if "userId" in session:
+            icon = session["userIcon"]
+            id = session["userId"]
+            dbop = DbOP("user")
+            userpoint = dbop.user(id)
+            dbop.close()
+            for poi in userpoint:
+                point = poi["point"]
+                session["userPoint"] = point
+            return render_template(
+                "post_detail.html",
+                result=result,
+                icon=icon,
+                point=point,
+                id=id,
+                post_user=post_user,
+            )
+        dbop.close()
+
+        return render_template("post_detail.html", result=result, post_user=post_user)
+
+    except mysql.connector.errors.ProgrammingError as e:
+        print("***DB接続エラー***")
+        print(type(e))
+        print(e)
+    except Exception as e:
+        print("***システム運行プログラムエラー***")
+        print(type(e))
+        print(e)
+
+
+@app.route("/post_user_detail/<user_id>", methods=["POST"])
+def post_user_detail(user_id):
+    try:
+        if "userId" in session:
+            id = session["userId"]
+            icon = session["userIcon"]
+            point = session["userPoint"]
+
+        print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        dbop = DbOP("user")
+        result = dbop.user(user_id)
+        post_date = dbop.postUser(user_id)
+        dbop.close()
+        for rec in result:
+            pointAll = rec["pointAll"]
+            tag = rec["tag_name"]
+            post_icon = rec["profile_image"]
+
+        pointAll = f"{pointAll:,}"
+        if " " in tag:
+            tag_tbl = tag.split(" ")
+        else:
+            tag_tbl = {tag}
+            print(tag_tbl)
+        if "userId" in session:
+            return render_template(
+                "myprofile.html",
+                result=result,
+                icon=icon,
+                post_icon=post_icon,
+                point=point,
+                pointAll=pointAll,
+                tag_tbl=tag_tbl,
+                post_date=post_date,
+            )
+        else:
+            return render_template(
+                "myprofile.html",
+                result=result,
+                post_icon=post_icon,
+                pointAll=pointAll,
+                tag_tbl=tag_tbl,
+                post_date=post_date,
+            )
+
+    except mysql.connector.errors.ProgrammingError as e:
+        print("***** DB接続エラー *****")
+        print(type(e))
+        print(e)
+    except Exception as e:
+        print("***** システム運行プログラムエラー *****")
+        print(type(e))
+        print(e)
+
+
 @app.route("/user")
 def user():
     if "userId" in session:
@@ -331,6 +431,7 @@ def user():
             for rec in result:
                 pointAll = rec["pointAll"]
                 tag = rec["tag_name"]
+                post_icon = rec["profile_image"]
 
             pointAll = f"{pointAll:,}"
             if " " in tag:
@@ -343,6 +444,7 @@ def user():
                 "myprofile.html",
                 result=result,
                 icon=icon,
+                post_icon=post_icon,
                 point=point,
                 pointAll=pointAll,
                 tag_tbl=tag_tbl,

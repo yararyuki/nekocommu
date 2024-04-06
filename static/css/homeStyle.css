@@ -442,28 +442,48 @@ main .post .user {
   z-index: 10;
   padding: 0.5vh;
 }
-main .post .user .user_icon {
+main .post .user form {
+  display: flex;
+}
+main .post .user form .user_icon {
   height: 4vh;
   width: 4vh;
   border-radius: 50%;
   overflow: hidden;
 }
-main .post .user .user_icon img {
+main .post .user form .user_icon img {
   height: 100%;
   width: 100%;
 }
-main .post .user .user_id {
+main .post .user form .user_id {
   margin-left: 0.5vh;
   line-height: 4vh;
   font-weight: bold;
   color: white;
   text-shadow: 1px 1px 1px black, -0.5px -0.5px 1px black, 0 0 4px white;
 }
+main .post .user form button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /* buttonのスタイル削除 */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
 main .post .imageArea {
   width: 100vw;
   overflow: hidden;
   background-color: #f1dfbf;
 }
+main .post .imageArea input,
 main .post .imageArea img {
   width: 100vw;
 }

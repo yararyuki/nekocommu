@@ -16,24 +16,44 @@ main {
             z-index: 10;
             padding: .5vh;
 
-            .user_icon {
-                height: 4vh;
-                width: 4vh;
-                border-radius: 50%;
-                overflow: hidden;
+            form {
+                display: flex;
 
-                img {
+                .user_icon {
+                    height: 4vh;
+                    width: 4vh;
+                    border-radius: 50%;
+                    overflow: hidden;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+
+                .user_id {
+                    margin-left: .5vh;
+                    line-height: 4vh;
+                    font-weight: bold;
+                    color: white;
+                    text-shadow: 1px 1px 1px black, -0.5px -0.5px 1px black, 0 0 4px white;
+                }
+
+                button {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
                     height: 100%;
                     width: 100%;
-                }
-            }
 
-            .user_id {
-                margin-left: .5vh;
-                line-height: 4vh;
-                font-weight: bold;
-                color: white;
-                text-shadow: 1px 1px 1px black, -0.5px -0.5px 1px black, 0 0 4px white;
+                    /* buttonのスタイル削除 */
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+                    outline: none;
+                    padding: 0;
+                    appearance: none;
+                }
             }
         }
 
@@ -42,6 +62,7 @@ main {
             overflow: hidden;
             background-color: $bgSubColor;
 
+            input,
             img {
                 width: 100vw;
             }

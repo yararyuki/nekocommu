@@ -37,10 +37,15 @@
         <div class="post">
             <div class="imageArea">
                 <a href="#" class="user">
-                    <p class="user_icon"><img src="/static/images/icon/{{rec['profile_image']}}" alt=""></p>
-                    <p class="user_id">{{rec['id']}}</p>
+                    <form action="/post_user_detail/{{rec['id']}}" method="post">
+                        <p class="user_icon"><img src="/static/images/icon/{{rec['profile_image']}}" alt=""></p>
+                        <p class="user_id">{{rec['id']}}</p>
+                        <button type="submit"></button>
+                    </form>
                 </a>
-                <img src="/static/images/post/{{rec['image']}}" alt="">
+                <form action="/post_detail/{{rec['post_id']}}" method="post">
+                    <input type="image" value="投稿" src="/static/images/post/{{rec['image']}}">
+                </form>
             </div>
             <div class="detailUp">
                 <div class="detailUpLeft">

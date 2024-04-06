@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}home{% endblock %}
+{% block title %}post{% endblock %}
 {% block head %}
 {{ super() }}
 <link rel="stylesheet" href="/static/css/homeStyle.css">
@@ -9,12 +9,15 @@
 
 <main>
     {% for rec in result %}
+
     <div class="post">
         <div class="imageArea">
             <a href="#" class="user">
                 <form action="/post_user_detail/{{rec['id']}}" method="post">
-                    <p class="user_icon"><img src="/static/images/icon/{{rec['profile_image']}}" alt=""></p>
-                    <p class="user_id">{{rec['id']}}</p>
+                    {% for pu in post_user %}
+                    <p class="user_icon"><img src="/static/images/icon/{{pu['profile_image']}}" alt=""></p>
+                    <p class="user_id">{{pu['id']}}</p>
+                    {% endfor %}
                     <button type="submit"></button>
                 </form>
             </a>
