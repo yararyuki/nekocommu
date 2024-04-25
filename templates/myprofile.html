@@ -33,6 +33,7 @@
     {% endfor %}
 
     <ul class="tag_Area filter-list">
+        <li data-filter="all" class="tag"><span>すべて</span></li>
         {% for tag in tag_tbl %}
         <li data-filter="{{tag}}" class="tag"><span>{{ tag }}</span></li>
         {% endfor %}
@@ -40,7 +41,7 @@
     <div id="postArea" class="filter-item">
         {% for pDate in post_date %}
 
-        <div class="post" data-item="{{pDate['tag_name']}}"><img src="/static/images/post/{{pDate['image']}}" alt="">
+        <div class="post" data-item="all {{pDate['tag_name']}}"><img src="/static/images/post/{{pDate['image']}}" alt="">
         </div>
         {% endfor %}
     </div>

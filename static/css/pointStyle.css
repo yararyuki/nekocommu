@@ -467,130 +467,96 @@ footer ul li input img {
   width: 100%;
 }
 
-main {
-  height: 80vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  background-color: #f1dfbf;
+main h1 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 50px;
+  margin-top: 50px;
 }
-main #user {
-  height: 20vh;
+main ul {
   width: 100vw;
-  background-color: white;
+  margin-top: 50px;
 }
-main #user #user-top {
-  height: 10vh;
+main ul li {
   display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 25px;
+  width: 320px;
+  height: 50px;
   overflow: hidden;
+  border: 1px solid black;
+}
+main ul li .imageArea {
+  width: 50px;
+  border: 1px solid black;
+}
+main ul li .imageArea img {
+  width: 50px;
+}
+main ul li .pointArea {
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: 1px solid black;
+}
+main ul li a {
+  width: 50px;
+  height: 30px;
+  margin: 10px;
+  text-align: center;
+  line-height: 30px;
   background-color: #f1dfbf;
+  border: 1px solid black;
 }
-main #user #user-top #icon {
-  width: 8vh;
-  height: 8vh;
-  margin: 2vh 2vh 0 2vh;
+
+.content {
+  margin: 0 auto;
+  padding: 40px;
 }
-main #user #user-top #icon p {
-  height: 8vh;
-  width: 8vh;
-  border-radius: 50%;
-  margin-bottom: 7vh;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: black;
-  overflow: hidden;
+
+.modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
 }
-main #user #user-top #icon p img {
+
+.modal__bg {
+  background: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  position: absolute;
   width: 100%;
 }
-main #user #user-top #data {
-  width: 80%;
-  height: 100%;
-  display: flex;
-  margin-top: 3vh;
-}
-main #user #user-top #data div {
-  width: 55%;
-}
-main #user #user-top #data div h2 {
-  font-size: 1.5em;
-  line-height: 4vh;
-}
-main #user #user-top #data div h3 {
-  font-size: 1.2em;
-  line-height: 2vh;
-}
-main #user #user-top #data p {
-  height: 6vh;
-  margin-top: 0.5vh;
-  text-align: center;
-}
-main #user #user-top #data p span {
-  display: block;
-  font-size: 1.5em;
-}
-main #user #user-bottom {
-  height: 10vh;
-  background-color: #f1dfbf;
-}
-main #user #user-bottom #detail {
-  height: 7vh;
-  background-color: #f1dfbf;
-  padding: 1vh;
-}
-main #user #user-bottom #followArea {
-  display: flex;
-}
-main #user #user-bottom #followArea li {
-  width: 33%;
-  margin: 0 0.5vh;
-  font-size: 1em;
-  text-align: center;
-}
-main .tag_Area {
-  height: 7vh;
-  width: 100vw;
-  padding: 1vh;
-  background-color: #DC8F45;
-  overflow-x: auto;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
-main .tag_Area .tag {
-  display: inline-block;
-  height: 5vh;
-  width: auto;
-  line-height: 5vh;
-  background-color: rgb(213, 213, 213);
-  margin-left: 5vw;
-  padding: 0 2vh;
-  border-radius: 30px;
-  text-align: center;
-}
-main .tag_Area .tag.is-active {
-  background-color: #ffcc77;
-  color: #fff;
-  text-shadow: 0 0 2px black;
-}
-main #postArea {
-  height: auto;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-main #postArea .post {
-  height: 32vw;
-  width: 32vw;
-  background-color: white;
-  margin: 0.66vw;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid gray;
-  box-shadow: 1px 1px 3px black;
-}
-main #postArea .post img {
-  width: 100%;
-  margin: auto 0;
+
+.modal__content {
+  background: #fff;
+  left: 50%;
+  padding: 40px;
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%);
-}/*# sourceMappingURL=myprofileStyle.css.map */
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+}
+.modal__content p {
+  font-size: 1.3em;
+}
+.modal__content div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2em;
+  margin-top: 10px;
+}
+.modal__content div input {
+  background-color: #f1dfbf;
+  padding: 3px;
+}
+.modal__content div a {
+  background-color: gray;
+  color: #fff;
+  padding: 3px;
+}/*# sourceMappingURL=pointStyle.css.map */

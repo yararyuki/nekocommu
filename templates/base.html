@@ -19,14 +19,20 @@
             <h1>ねここみゅ</h1>
         </div>
         <div id="navArea">
-            <a href="#" id="point">
+            <form action="/point" id="point">
                 <h2><img src="/static/images/material/point.png" alt=""></h2>
                 {% if "userId" in session %}
                 <p>{{point}} NP</p>
                 {% else %}
                 <p>ないよ</p>
                 {% endif %}
-            </a>
+                <button type="submit"></button>
+                {% if pointAdd == "on" %}
+                <div id="pointPop" class="p-none">
+                    <p>追加しました</p>
+                </div>
+                {% endif%}
+            </form>
             <div class="openbtn"><span></span><span></span><span></span></div>
             <nav id="g-nav">
                 <div id="g-nav-list">

@@ -1,0 +1,102 @@
+@use "_variables.scss" as *;
+
+main {
+    h1{
+        margin: 0 auto;
+        text-align: center;
+        font-size: 50px;
+        margin-top: 50px;
+    }
+    ul {
+        width: 100vw;
+        margin-top: 50px;
+        li {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            margin-top: 25px;
+            width: 320px;
+            height: 50px;
+            overflow: hidden;
+            border: 1px solid black;
+
+            .imageArea {
+                width: 50px;
+                border: 1px solid black;
+
+                img {
+                    width: 50px;
+                }
+            }
+
+            .pointArea {
+                width: 200px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                border: 1px solid black;
+
+            }
+
+            a {
+                width: 50px;
+                height: 30px;
+                margin: 10px;
+                text-align: center;
+                line-height: 30px;
+                background-color: $bgSubColor;
+                border: 1px solid black;
+            }
+        }
+    }
+}
+
+.content {
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.modal {
+    display: none;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.modal__bg {
+    background: rgba(0, 0, 0, 0.8);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+}
+
+.modal__content {
+    background: #fff;
+    left: 50%;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+    p{
+        font-size: 1.3em;
+    }
+    div{
+        display: flex;
+        justify-content: space-between;
+        font-size: 2em;
+        margin-top: 10px;
+        input{
+            background-color: $bgSubColor;
+            padding: 3px;
+        }
+        a{
+            background-color: gray;
+            color: #fff;
+            padding: 3px;
+        }
+    }
+}

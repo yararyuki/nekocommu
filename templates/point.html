@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}point{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/pointStyle.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+<link rel="stylesheet" type="text/css" href="css/9-6-1.css">
+{% endblock %}
+{% block main %}
+
+<main>
+    <h1>課金</h1>
+    <ul>
+        <li>
+            <p class="imageArea"><img src="/static/images/material/point.png" alt=""></p>
+            <p class="pointArea">100NP</p>
+            <a class="js-modal-open" href="" data-target="modal01">追加</a>
+        </li>
+        <li>
+            <p class="imageArea"><img src="/static/images/material/point.png" alt=""></p>
+            <p class="pointArea">500NP</p>
+            <a class="js-modal-open" href="" data-target="modal02">追加</a>
+        </li>
+        <li>
+            <p class="imageArea"><img src="/static/images/material/point.png" alt=""></p>
+            <p class="pointArea">1000NP</p>
+            <a class="js-modal-open" href="" data-target="modal03">追加</a>
+        </li>
+        <li>
+            <p class="imageArea"><img src="/static/images/material/point.png" alt=""></p>
+            <p class="pointArea">3000NP</p>
+            <a class="js-modal-open" href="" data-target="modal04">追加</a>
+        </li>
+        <li>
+            <p class="imageArea"><img src="/static/images/material/point.png" alt=""></p>
+            <p class="pointArea">10000NP</p>
+            <a class="js-modal-open" href="" data-target="modal05">追加</a>
+        </li>
+    </ul>
+    <div id="modal01" class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+            <p>100NP追加します<br>よろしいですか？
+            </p>
+            <div>
+                <form action="/pointAdd/100">
+                    <input type="submit" value="追加">
+                </form>
+                <a class="js-modal-close" href="">閉じる</a>
+            </div>
+        </div>
+    </div>
+    <div id="modal02" class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+            <p>500NP追加します<br>よろしいですか？
+            </p>
+            <div>
+                <form action="/pointAdd/500">
+                    <input type="submit" value="追加">
+                </form>
+                <a class="js-modal-close" href="">閉じる</a>
+            </div>
+        </div>
+    </div>
+    <div id="modal03" class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+            <p>1000NP追加します<br>よろしいですか？
+            </p>
+            <div>
+                <form action="/pointAdd/1000">
+                    <input type="submit" value="追加">
+                </form>
+                <a class="js-modal-close" href="">閉じる</a>
+            </div>
+        </div>
+    </div>
+    <div id="modal04" class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+            <p>3000NP追加します<br>よろしいですか？
+            </p>
+            <div>
+                <form action="/pointAdd/3000">
+                    <input type="submit" value="追加">
+                </form>
+                <a class="js-modal-close" href="">閉じる</a>
+            </div>
+        </div>
+    </div>
+    <div id="modal05" class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+            <p>10000NP追加します<br>よろしいですか？
+            </p>
+            <div>
+                <form action="/pointAdd/10000">
+                    <input type="submit" value="追加">
+                </form>
+                <a class="js-modal-close" href="">閉じる</a>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}
+{% block js %}
+{{ super() }}
+<script src="/static/js/menu.js"></script>
+<script src="/static/js/modal.js"></script>
+{% endblock %}

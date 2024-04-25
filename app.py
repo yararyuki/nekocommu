@@ -239,6 +239,16 @@ class DbOP:
         self.__con.commit()
         cur.close()
 
+    def addPoint(self, point, user_id):
+        sql = (
+            "UPDATE user SET point = point +" + point + " WHERE ID ='" + user_id + "';"
+        )
+        print(sql)
+        cur = self.__con.cursor()
+        cur.execute(sql)
+        self.__con.commit()
+        cur.close()
+
     # コミット
     def commit(self, sql):
         print(sql)
@@ -306,21 +316,31 @@ def home():
         dbop = DbOP("post")
         result = dbop.homePost()
         dbop.close()
-
         if "userId" in session:
             icon = session["userIcon"]
             id = session["userId"]
             dbop = DbOP("user")
             userpoint = dbop.user(id)
             dbop.close()
+            if "pointAdd" in session:
+                session.pop("pointAdd", None)
+                pointAdd = "on"
+            else:
+                pointAdd = "off"
             for poi in userpoint:
                 point = poi["point"]
                 session["userPoint"] = point
             return render_template(
-                "home.html", result=result, icon=icon, point=point, id=id
+                "home.html",
+                result=result,
+                icon=icon,
+                point=point,
+                id=id,
+                pointAdd=pointAdd,
             )
 
-        return render_template("home.html", result=result)
+        pointAdd = "off"
+        return render_template("home.html", result=result, pointAdd=pointAdd)
 
     except mysql.connector.errors.ProgrammingError as e:
         print("***DB接続エラー***")
@@ -479,6 +499,56 @@ def user():
     else:
         test = {}
         return render_template("login.html", test=test)
+
+
+@app.route("/point")
+def point():
+    if "userId" in session:
+        try:
+            id = session["userId"]
+            icon = session["userIcon"]
+            point = session["userPoint"]
+
+            print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+
+            return render_template("point.html", id=id, icon=icon, point=point)
+
+        except mysql.connector.errors.ProgrammingError as e:
+            print("***** DB接続エラー *****")
+            print(type(e))
+            print(e)
+        except Exception as e:
+            print("***** システム運行プログラムエラー *****")
+            print(type(e))
+            print(e)
+
+    else:
+        test = {}
+        return render_template("login.html", test=test)
+
+
+@app.route("/pointAdd/<addPoint>")
+def pointAdd(addPoint):
+    try:
+        id = session["userId"]
+        icon = session["userIcon"]
+        dbop = DbOP("user")
+        dbop.addPoint(addPoint, id)
+        result = dbop.user(id)
+        for rec in result:
+            point = rec["point"]
+        session["userPoint"] = point
+        session["pointAdd"] = "1"
+        return redirect("/")
+
+    except mysql.connector.errors.ProgrammingError as e:
+        print("***** DB接続エラー *****")
+        print(type(e))
+        print(e)
+    except Exception as e:
+        print("***** システム運行プログラムエラー *****")
+        print(type(e))
+        print(e)
 
 
 @app.route("/post")
@@ -1185,6 +1255,7 @@ def crop_max_square(pil_img):
 # !===================================================================================
 # !===================================================================================
 
+
 @app.route("/shop")
 def shop():
     session.pop("mail", None)
@@ -1216,12 +1287,6 @@ def shop():
         print("***システム運行プログラムエラー***")
         print(type(e))
         print(e)
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
