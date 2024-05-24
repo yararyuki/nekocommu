@@ -14,7 +14,7 @@ app.secret_key = "心がカギ"
 app.permanent_session_lifetime = timedelta(hours=24)
 app.config["MAX_CONTENT_LENGTH"] = 8**20
 Extension = set(["png", "jpg", "gif"])
-
+# ああああ
 
 # Gmailの設定
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
